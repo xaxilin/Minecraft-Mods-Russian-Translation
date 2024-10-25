@@ -163,7 +163,7 @@ jobs:
 
             Этот выпуск предназначен для постоянного тестирования и отладки.
           tag_name: a${{ steps.get_latest_release.outputs.next_version }}
-          name: Альфа-выпуск №${{ steps.get_latest_release.outputs.next_version }}
+          name: ${{ steps.get_latest_release.outputs.next_version }}-й альфа-выпуск
           draft: false
           prerelease: true
 
