@@ -64,7 +64,7 @@
     "config.entity_texture_features.player_skin_editor.blink_type.whole.1": "Мерцание: всё лицо, 1 кадр",
     "config.entity_texture_features.player_skin_editor.blink_type.whole.2": "Мерцание: всё лицо, 2 кадра",
     "config.entity_texture_features.player_skin_editor.button.enabled": "Открыть редактор",
-    "config.entity_texture_features.player_skin_editor.button.disabled": "Редактор скина недоступен…",
+    "config.entity_texture_features.player_skin_editor.button.disabled": "Редактор скина недоступен...",
     "config.entity_texture_features.player_skin_editor.cape.button": "Плащ: ",
     "config.entity_texture_features.player_skin_editor.cape.custom": "В текстуре скина",
     "config.entity_texture_features.player_skin_editor.cape.etf": "ETF",
@@ -170,5 +170,5 @@
     "config.entity_texture_features.ignore_all": "Игнорировать",
     "config.entity_texture_features.ignore_description": "Настройки ETF не будут затронуты, если проигнорировать это предупреждение.",
     "modmenu.summaryTranslation.entity_texture_features": "Новые возможности в улучшении текстур сущностей при помощи наборов ресурсов.",
-    "modmenu.descriptionTranslation.entity_texture_features": "Этот мод расширяет возможности улучшения текстур сущностей при помощи наборов ресурсов.\nПоддерживаются старые функции Optifine:\n • Случайные и особые текстуры\n • Светящиеся текстуры\n…а также совершенно новые, такие как:\n • Мерцающие текстуры\n • Персонализация скинов"
+    "modmenu.descriptionTranslation.entity_texture_features": "Этот мод расширяет возможности улучшения текстур сущностей при помощи наборов ресурсов.\nПоддерживаются старые функции Optifine:\n • Случайные и особые текстуры\n • Светящиеся текстуры\n...а также совершенно новые, такие как:\n • Мерцающие текстуры\n • Персонализация скинов"
 }

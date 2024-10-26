@@ -77,7 +77,7 @@
     "key.nochatreports.cmd": "Cmd",
     "key.nochatreports.ctrl": "Ctrl",
     "modmenu.descriptionTranslation.nochatreports": "Удаляет криптографические подписи из сообщений игроков, делая невозможным их отслеживание и привязку к вашей учетной записи Mojang/Microsoft, а также использование функции создания отчётов в чате игроков.",
-    "nochatreports.connect.await": "Ожидание повторного подключения: %1$s секунд…",
+    "nochatreports.connect.await": "Ожидание повторного подключения: %1$s секунд...",
     "nochatreports.connect.nokey_rejected": "Сервер отклонил соединение без ключа подписи чата.",
     "option.NoChatReports.addQueryData": "Добавление данных запроса",
     "option.NoChatReports.addQueryData.tooltip": "Позволяет серверу отправлять дополнительные данные клиенту при обработке пингов. Это используется для отображения значка «Безопасный сервер», а также для некоторых других технических целей.",

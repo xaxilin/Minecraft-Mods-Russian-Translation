@@ -328,7 +328,7 @@ achievement.enchanter=Вы верите в магию?
 achievement.mount_phyg=Свин Аэрлайнс
 achievement.bronze_dungeon=Кто теперь босс?
 achievement.silver_dungeon=Прочь с трона!
-achievement.gold_dungeon=Погас…
+achievement.gold_dungeon=Погас...
 achievement.loreception=Знание в знании
 
 # Описания достижений
@@ -386,20 +386,20 @@ gui.valkyrie.dialog.1=Что такое? Хочешь сразиться? Ой, 
 gui.valkyrie.dialog.2=Ты же не всерьёз собрался драться с большой и сильной валькирией, ведь так?
 gui.valkyrie.dialog.3=Не думаю, что тебе стоит меня беспокоить, ты можешь пострадать.
 
-gui.valkyrie.dialog.medal.1=Ммм… У тебя так много красивых побрекушек…
+gui.valkyrie.dialog.medal.1=Ммм... У тебя так много красивых побрекушек...
 gui.valkyrie.dialog.medal.2=Впечатляет, но это не показатель.
 gui.valkyrie.dialog.medal.3=Что? Думаешь, такой крутой? Ну, давай, нападай!
 
 gui.valkyrie.dialog.defeated.1=Ладно, ладно! Ты победил!
 gui.valkyrie.dialog.defeated.2=Хорошо, я сдаюсь! Боже!
-gui.valkyrie.dialog.defeated.3=Ахх! Ладно, вот твоя медаль…
+gui.valkyrie.dialog.defeated.3=Ахх! Ладно, вот твоя медаль...
 
 gui.valkyrie.dialog.attack.1=Поблажек не будет!
 gui.valkyrie.dialog.attack.2=Ты об этом пожалеешь!
 gui.valkyrie.dialog.attack.3=Теперь тебе конец!
 
 gui.valkyrie.dialog.playerdead.1=Хочешь медаль? Постарайся быть менее жалким.
-gui.valkyrie.dialog.playerdead.2=Может быть, когда-нибудь, %s… Может быть, когда-нибудь.
+gui.valkyrie.dialog.playerdead.2=Может быть, когда-нибудь, %s... Может быть, когда-нибудь.
 gui.valkyrie.dialog.playerdead.3=Люди не такие уж милые, когда мертвы.
 
 gui.valkyrie.dialog.ready=Давай, нападай!
@@ -408,10 +408,10 @@ gui.valkyrie.dialog.nofight=Что ж, тогда до следующей вст
 
 gui.valkyrie.dialog.player.havemedals=Я готов, у меня есть медали!
 gui.valkyrie.dialog.player.lackmedals=Вернусь, когда будут медали.
-gui.valkyrie.dialog.player.denyfight=Сейчас, когда я подумал об этом… Может, позже?
+gui.valkyrie.dialog.player.denyfight=Сейчас, когда я подумал об этом... Может, позже?
 
 gui.queen.ready=Если хочешь бросить мне вызов, атакуй в любой момент.
-gui.queen.defeated=Ты действительно… могучий воин…
+gui.queen.defeated=Ты действительно... могучий воин...
 gui.queen.peaceful=Прости, я не дерусь со слабаками.
 gui.queen.nomedals=Попробуй сначала победить нескольких менее сильных валькирий.
 gui.queen.fight=Это будет твоя последняя битва!
@@ -439,7 +439,7 @@ gui.spirit.line7.2=Хватит нарушать моё право на личн
 gui.spirit.line8=Это твоё последнее предупреждение. Уходи сейчас или готовься стать углём.
 gui.spirit.line9=Как пожелаешь, твоя смерть будет медленной и мучительной.
 gui.spirit.line10=Тебя не удовлетворила твоя предыдущая смерть, человек?
-gui.spirit.dead=Такой горький холод… Это чувство… боли?
+gui.spirit.dead=Такой горький холод... Это чувство... боли?
 gui.spirit.playerdied=Такова судьба существа, которое осмелилось противостоять могуществу солнца.
 
 gui.sun_altar.message=Дух солнца не имеет власти над этим миром.
@@ -461,7 +461,7 @@ title.aether_legacy.sun_spirit.name=дух солнца
 
 gui.skyroot_bed.respawn_point=Точка возрождения установлена
 
-gui.options.perk_customization=Настройка особенностей…
+gui.options.perk_customization=Настройка особенностей...
 gui.options.perk_customization.title=Настройка особенностей
 gui.button.halo=Аура:
 gui.button.glow=Подсветка разработчика:

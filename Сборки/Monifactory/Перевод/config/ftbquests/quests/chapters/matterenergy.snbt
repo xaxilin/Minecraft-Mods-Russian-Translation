@@ -69,7 +69,7 @@
 				type: "item"
 			}]
 			shape: "hexagon"
-			subtitle: "Доступ ко всем ваши предметам из одного экрана! Вскоре…"
+			subtitle: "Доступ ко всем ваши предметам из одного экрана! Вскоре..."
 			tasks: [{
 				id: "25CB53FBDBE5C347"
 				item: "ae2:terminal"
@@ -615,7 +615,7 @@
 				tag: { }
 			}
 			id: "5A83E1115F965393"
-			subtitle: "Упс… Всё погасло!"
+			subtitle: "Упс... Всё погасло!"
 			tasks: [{
 				id: "714C125E0ED99334"
 				item: {
@@ -855,7 +855,7 @@
 			]
 			id: "1175ED9EF0AB82F6"
 			shape: "hexagon"
-			subtitle: "АЕ2 везде… почти"
+			subtitle: "АЕ2 везде... почти"
 			tasks: [{
 				id: "564AFB42CC6805FF"
 				item: {

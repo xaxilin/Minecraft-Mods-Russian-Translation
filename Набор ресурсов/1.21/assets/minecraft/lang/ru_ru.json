@@ -149,7 +149,7 @@
     "rpo.modsru.general.modsWordStyle.modification": "«§aМодификация§r»",
     "rpo.modsru.general.modsWordStyle.tooltip": "Определите, каким вы хотите видеть перевод слова §amod§r",
     "rpo.modsru.general.removeEllipsis": "Убрать многоточия там, где они не нужны",
-    "rpo.modsru.general.removeEllipsis.tooltip": "Например, «Настройки» заместо «Настройки…»",
+    "rpo.modsru.general.removeEllipsis.tooltip": "Например, «Настройки» заместо «Настройки...»",
     "rpo.modsru.general.removeModInTatar": "«§aӨстәмә§r»",
     "rpo.modsru.general.removeModInTatar.tooltip": "Заменить «§aмод§r» в татарском языке на более татарское «§aөстәмә§r»",
     "rpo.modsru.general.tooltip": "Настройки, касающиеся большинства модов",

@@ -124,14 +124,14 @@ ItemEvents.tooltip(tooltip => {
 
     // Различное
 
-    tooltip.add('kubejs:eternal_catalyst', Text.darkGray('Всмотрись в бездну…'))
+    tooltip.add('kubejs:eternal_catalyst', Text.darkGray('Всмотрись в бездну...'))
     tooltip.add('kubejs:infinity_catalyst', Text.darkGray('Одно есть всё, и всё есть одно.'))
     tooltip.add('gtceu:infinity_ingot', Text.darkGray('Ярость вселенной в ваших руках.'))
     tooltip.add('gtceu:monium_ingot', Text.darkGray('Спокойствие вселенной в ваших руках.'))
-    tooltip.add('extendedcrafting:the_ultimate_catalyst', Text.darkGray("Я — истинный пиковый катализатор…"))
+    tooltip.add('extendedcrafting:the_ultimate_catalyst', Text.darkGray("Я — истинный пиковый катализатор..."))
     tooltip.add('extendedcrafting:auto_flux_crafter',("Использует большое количество энергии для преобразования скалка в скалковые ядра."))
     tooltip.add('extendedcrafting:flux_alternator', ("Обеспечивает энергией скалковое зарядное устройство на расстоянии до 3 блоков."))
-    tooltip.add('extendedcrafting:the_ultimate_component', Text.darkGray("Нет никого лучше меня…"))
+    tooltip.add('extendedcrafting:the_ultimate_component', Text.darkGray("Нет никого лучше меня..."))
     tooltip.add('kubejs:excitationcoil', 'Исключительно компонент рецептов')
     tooltip.add('gtceu:terminal', 'Может автоматически выстраивать многоблочные структуры при нажатии ПКМ с зажатой Shift по контроллеру')
 

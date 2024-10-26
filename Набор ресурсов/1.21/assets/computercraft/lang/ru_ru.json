@@ -29,7 +29,7 @@
     "commands.computercraft.dump.desc": "Отображает состояние всех компьютеров или конкретной информации об одном компьютере. Ты можешь указать идентификатор экземпляра компьютера (например 123), идентификатор компьютера (например #123) или метку (например \"@Мой компьютер\").",
     "commands.computercraft.dump.open_path": "Просмотреть файлы этого компьютера",
     "commands.computercraft.dump.synopsis": "Отобразить состояние компьютеров.",
-    "commands.computercraft.generic.additional_rows": "%d дополнительных строк …",
+    "commands.computercraft.generic.additional_rows": "%d дополнительных строк ...",
     "commands.computercraft.generic.exception": "Необработанное исключение (%s)",
     "commands.computercraft.generic.no": "N",
     "commands.computercraft.generic.no_position": "<нет позиции>",
