@@ -24,9 +24,14 @@ response = requests.get(f"https://api.github.com/repos/{repo}", headers=headers)
 stars_count = response.json()["stargazers_count"]
 
 # Скачивание шрифта с Google Fonts
-font_url = "https://github.com/google/fonts/raw/main/ofl/inter/Inter[opsz,wght].ttf"
-font_response = requests.get(font_url)
-font = ImageFont.truetype(BytesIO(font_response.content), size=30)
+inter_url = "https://github.com/google/fonts/raw/main/ofl/inter/Inter[opsz,wght].ttf"
+inter_response = requests.get(inter_url)
+inter_font = ImageFont.truetype(BytesIO(inter_response.content), size=30)
+
+# Noto Color Emoji для эмодзи
+noto_emoji_url = "https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf"
+emoji_response = requests.get(noto_emoji_url)
+emoji_font = ImageFont.truetype(BytesIO(emoji_response.content), size=30)
 
 # Создание нового изображения
 width = 200
@@ -34,21 +39,33 @@ height = 50
 image = Image.new('RGBA', (width, height), (255, 255, 255, 0))
 draw = ImageDraw.Draw(image)
 
-# Настройка текста
-text = f"⭐ {stars_count}"
-
-# Получение размеров текста
-text_bbox = draw.textbbox((0, 0), text, font=font)
-text_width = text_bbox[2] - text_bbox[0]
-text_height = text_bbox[3] - text_bbox[1]
-x = (width - text_width) / 2
-y = (height - text_height) / 2
-
 # Добавление фона
 draw.rounded_rectangle([0, 0, width, height], fill=(45, 45, 45, 230), radius=10)
 
+# Отрисовка эмодзи и текста по отдельности
+emoji = "⭐"
+text = f" {stars_count}"
+
+# Получение размеров для эмодзи
+emoji_bbox = draw.textbbox((0, 0), emoji, font=emoji_font)
+emoji_width = emoji_bbox[2] - emoji_bbox[0]
+emoji_height = emoji_bbox[3] - emoji_bbox[1]
+
+# Получение размеров для текста
+text_bbox = draw.textbbox((0, 0), text, font=inter_font)
+text_width = text_bbox[2] - text_bbox[0]
+text_height = text_bbox[3] - text_bbox[1]
+
+# Вычисление общей ширины
+total_width = emoji_width + text_width
+x = (width - total_width) / 2
+y = (height - max(emoji_height, text_height)) / 2
+
+# Отрисовка эмодзи
+draw.text((x, y), emoji, font=emoji_font, fill=(255, 255, 255, 255))
+
 # Отрисовка текста
-draw.text((x, y), text, font=font, fill=(255, 255, 255, 255))
+draw.text((x + emoji_width, y), text, font=inter_font, fill=(255, 255, 255, 255))
 
 # Создание каталога, если его нет
 os.makedirs('Ассеты', exist_ok=True)
