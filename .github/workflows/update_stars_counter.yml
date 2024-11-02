@@ -24,7 +24,7 @@ jobs:
           
       - name: Генерация счётчика звёзд
         run: |
-          python .github/scripts/generate_stars_counter.py
+          python .github/py/generate_stars_counter.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
