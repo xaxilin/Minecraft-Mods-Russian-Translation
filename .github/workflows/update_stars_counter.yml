@@ -33,5 +33,5 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add Ассеты/stars-counter.png
-          git commit -m "Update stars counter" -a || echo "No changes to commit"
+          git commit -m "Обновление счётчика звёзд" -a || echo "No changes to commit"
           git push
