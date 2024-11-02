@@ -45,7 +45,7 @@ x = (width - text_width) / 2
 y = (height - text_height) / 2
 
 # Добавление фона
-rounded_rectangle([0, 0, width, height], fill=(45, 45, 45, 230), radius=10)
+draw.rounded_rectangle([0, 0, width, height], fill=(45, 45, 45, 230), radius=10)
 
 # Отрисовка текста
 draw.text((x, y), text, font=font, fill=(255, 255, 255, 255))
