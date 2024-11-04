@@ -202,7 +202,7 @@
     "forge.selectWorld.backupWarning.experimental.additional": "Это сообщение больше не будет появляться при загрузке этого мира.",
     "forge.stepHeight": "Высота шага",
     "forge.swimSpeed": "Скорость плавания",
-    "forge.update.beta.1": "%sВНИМАНИЕ:%s это ранний выпуск Forge.",
+    "forge.update.beta.1": "%sВНИМАНИЕ: %sэто бета-версия Forge",
     "forge.update.beta.2": "Недоработки ожидаемы. Перед тем, как сообщить о проблеме, проверьте, не сообщали ли о ней.",
     "forge.update.newversion": "Доступна новая версия Forge: %s",
     "generic.attack_range": "Дальность атаки",
