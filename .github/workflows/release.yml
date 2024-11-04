@@ -145,7 +145,7 @@ jobs:
         with:
           body: ${{ steps.generate_mod_list.outputs.release_body }}
           tag_name: b${{ steps.get_latest_release.outputs.next_version }}
-          name: Бета-выпуск №${{ steps.get_latest_release.outputs.next_version }}
+          name: ${{ steps.get_latest_release.outputs.next_version }}-я бета
           draft: false
           prerelease: true
 
@@ -178,7 +178,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_API_KEY }}
           files: |
             ./Rus-For-Mods-1.7-B${{ steps.get_latest_release.outputs.next_version }}.zip
-          name: Бета-версия №${{ steps.get_latest_release.outputs.next_version }} для MC 1.7.x
+          name: ${{ steps.get_latest_release.outputs.next_version }}-я бета для MC 1.7.x
           version: 1.7-B${{ steps.get_latest_release.outputs.next_version }}
           version-type: beta
           changelog: |
@@ -207,7 +207,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_API_KEY }}
           files: |
             ./Rus-For-Mods-1.12-B${{ steps.get_latest_release.outputs.next_version }}.zip
-          name: Бета-версия №${{ steps.get_latest_release.outputs.next_version }} для MC 1.12.x
+          name: ${{ steps.get_latest_release.outputs.next_version }}-я бета для MC 1.12.x
           version: 1.12-B${{ steps.get_latest_release.outputs.next_version }}
           version-type: beta
           changelog: |
@@ -236,7 +236,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_API_KEY }}
           files: |
             ./Rus-For-Mods-1.16-B${{ steps.get_latest_release.outputs.next_version }}.zip
-          name: Бета-версия №${{ steps.get_latest_release.outputs.next_version }} для MC 1.16.x
+          name: ${{ steps.get_latest_release.outputs.next_version }}-я бета для MC 1.16.x
           version: 1.16-B${{ steps.get_latest_release.outputs.next_version }}
           version-type: beta
           changelog: |
@@ -267,7 +267,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_API_KEY }}
           files: |
             ./Rus-For-Mods-1.17-B${{ steps.get_latest_release.outputs.next_version }}.zip
-          name: Бета-версия №${{ steps.get_latest_release.outputs.next_version }} для MC 1.17.x
+          name: ${{ steps.get_latest_release.outputs.next_version }}-я бета для MC 1.17.x
           version: 1.17-B${{ steps.get_latest_release.outputs.next_version }}
           version-type: beta
           changelog: |
@@ -299,7 +299,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_API_KEY }}
           files: |
             ./Rus-For-Mods-1.18-B${{ steps.get_latest_release.outputs.next_version }}.zip
-          name: Бета-версия №${{ steps.get_latest_release.outputs.next_version }} для MC 1.18.x
+          name: ${{ steps.get_latest_release.outputs.next_version }}-я бета для MC 1.18.x
           version: 1.18-B${{ steps.get_latest_release.outputs.next_version }}
           version-type: beta
           changelog: |
@@ -331,7 +331,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_API_KEY }}
           files: |
             ./Rus-For-Mods-1.19-B${{ steps.get_latest_release.outputs.next_version }}.zip
-          name: Бета-версия №${{ steps.get_latest_release.outputs.next_version }} для MC 1.19.x
+          name: ${{ steps.get_latest_release.outputs.next_version }}-я бета для MC 1.19.x
           version: 1.19-B${{ steps.get_latest_release.outputs.next_version }}
           version-type: beta
           changelog: |
@@ -364,7 +364,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_API_KEY }}
           files: |
             ./Rus-For-Mods-1.20-B${{ steps.get_latest_release.outputs.next_version }}.zip
-          name: Бета-версия №${{ steps.get_latest_release.outputs.next_version }} для MC 1.20.x
+          name: ${{ steps.get_latest_release.outputs.next_version }}-я бета для MC 1.20.x
           version: 1.20-B${{ steps.get_latest_release.outputs.next_version }}
           version-type: beta
           changelog: |
@@ -397,7 +397,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_API_KEY }}
           files: |
             ./Rus-For-Mods-1.21-B${{ steps.get_latest_release.outputs.next_version }}.zip
-          name: Бета-версия №${{ steps.get_latest_release.outputs.next_version }} для MC 1.21.x
+          name: ${{ steps.get_latest_release.outputs.next_version }}-я бета для MC 1.21.x
           version: 1.21-B${{ steps.get_latest_release.outputs.next_version }}
           version-type: beta
           changelog: |
