@@ -52,11 +52,21 @@ jobs:
 
             const releases = response.data;
 
-            let latestRelease = null;
+            const tagRegex = /^(\d+)\.(\d+)(?:\.(\d+))?(?:-C(\d+))?(?:-B(\d+))?(?:-A(\d+))?$/;
+
             let latestAlphaRelease = null;
             let latestBetaRelease = null;
 
-            const tagRegex = /^(\d+)\.(\d+)(?:\.(\d+))?(?:-C(\d+))?(?:-B(\d+))?(?:-A(\d+))?$/;
+            function compareVersions(a, b) {
+              const components = ['major', 'minor', 'patch', 'candidate', 'beta', 'alpha'];
+              for (const comp of components) {
+                const diff = parseInt(a[comp] || '0') - parseInt(b[comp] || '0');
+                if (diff !== 0) {
+                  return diff;
+                }
+              }
+              return 0;
+            }
 
             for (const release of releases) {
               const tag = release.tag_name;
@@ -65,13 +75,15 @@ jobs:
               if (match) {
                 const [_, major, minor, patch = '0', candidate = '0', beta = '0', alpha = '0'] = match;
 
+                const currentRelease = { major, minor, patch, candidate, beta, alpha, release };
+
                 if (alpha !== '0') {
-                  if (!latestAlphaRelease || new Date(release.created_at) > new Date(latestAlphaRelease.release.created_at)) {
-                    latestAlphaRelease = { major, minor, patch, candidate, beta, alpha, release };
+                  if (!latestAlphaRelease || compareVersions(currentRelease, latestAlphaRelease) > 0) {
+                    latestAlphaRelease = currentRelease;
                   }
                 } else if (beta !== '0') {
-                  if (!latestBetaRelease || new Date(release.created_at) > new Date(latestBetaRelease.release.created_at)) {
-                    latestBetaRelease = { major, minor, patch, candidate, beta, release };
+                  if (!latestBetaRelease || compareVersions(currentRelease, latestBetaRelease) > 0) {
+                    latestBetaRelease = currentRelease;
                   }
                 }
               }
@@ -102,7 +114,7 @@ jobs:
 
             // Проверка, была ли выпущена новая бета после последней альфы
             if (latestBetaRelease && latestAlphaRelease) {
-              if (new Date(latestBetaRelease.release.created_at) > new Date(latestAlphaRelease.release.created_at)) {
+              if (compareVersions(latestBetaRelease, latestAlphaRelease) > 0) {
                 nextBeta = parseInt(latestBetaRelease.beta) + 1;
                 nextAlpha = 1;
               }
