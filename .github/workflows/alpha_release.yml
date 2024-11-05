@@ -250,7 +250,7 @@ jobs:
             "Rus-For-Mods-1.21-${{ steps.get_latest_release.outputs.tag_name }}.zip"
             "Monifactory-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip"
             "The-Ferret-Business-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip"
-            "GT New Horizons-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "GTNH-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip"
             "All-Of-Fabric-6-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip"
             "BMC-4-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip"
           )
