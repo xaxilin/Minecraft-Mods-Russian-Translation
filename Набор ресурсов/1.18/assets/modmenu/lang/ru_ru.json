@@ -99,7 +99,7 @@
     "modmenu.title": "Моды",
     "modmenu.toggleFilterOptions": "Показать/убрать фильтры",
     "modmenu.twitch": "Twitch",
-    "modmenu.twitter": "X",
+    "modmenu.twitter": "X (Твиттер)",
     "modmenu.viewCredits": "Открыть титры и атрибуции",
     "modmenu.website": "Сайт",
     "modmenu.wiki": "Вики",
@@ -148,6 +148,6 @@
     "option.modmenu.show_libraries.false": "скрыты",
     "option.modmenu.show_libraries.true": "Показаны",
     "option.modmenu.sorting": "Сортировать",
-    "option.modmenu.sorting.ascending": "от А до Я",
-    "option.modmenu.sorting.descending": "от Я до А"
+    "option.modmenu.sorting.ascending": "А-Я",
+    "option.modmenu.sorting.descending": "Я-А"
 }

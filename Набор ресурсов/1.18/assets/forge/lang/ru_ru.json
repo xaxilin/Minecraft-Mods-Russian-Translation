@@ -165,7 +165,7 @@
     "forge.menu.updatescreen.title": "Обновление модификации",
     "forge.nameTagDistance": "Расстояние отрисовки бирки",
     "forge.swimSpeed": "Скорость плавания",
-    "forge.update.beta.1": "%sВНИМАНИЕ:%s это ранний выпуск Forge.",
+    "forge.update.beta.1": "%sВНИМАНИЕ: %sэто бета-версия Forge",
     "forge.update.beta.2": "Недоработки ожидаемы. Перед тем, как сообщить о проблеме, проверьте, не сообщали ли о ней.",
     "forge.update.newversion": "Доступна новая версия Forge: %s",
     "generic.reachDistance": "Дальность досягаемости"

@@ -1,0 +1,285 @@
+name: Альфа-выпуск
+
+on:
+  push:
+    branches:
+      - alpha
+    paths:
+      - 'Набор ресурсов/**'
+      - 'Сборки/Monifactory/Перевод/**'
+      - 'Сборки/The Ferret Business/Перевод/**'
+      - 'Сборки/All of Fabric 6/Перевод/**'
+      - 'Сборки/GT New Horizons/Перевод/**'
+      - 'Сборки/Better MC 4/Перевод/**'
+  pull_request:
+    branches:
+      - alpha
+    paths:
+      - 'Набор ресурсов/**'
+      - 'Сборки/Monifactory/Перевод/**'
+      - 'Сборки/The Ferret Business/Перевод/**'
+      - 'Сборки/All of Fabric 6/Перевод/**'
+      - 'Сборки/GT New Horizons/Перевод/**'
+      - 'Сборки/Better MC 4/Перевод/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Клонирование репозитория
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Установка утилиты ZIP
+        run: sudo apt-get install -y zip
+
+      - name: Проверка последнего выпуска
+        id: get_latest_release
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const response = await github.rest.repos.listReleases({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+
+            const releases = response.data;
+
+            let latestRelease = null;
+            let latestAlphaRelease = null;
+            let latestBetaRelease = null;
+
+            const tagRegex = /^(\d+)\.(\d+)(?:\.(\d+))?(?:-C(\d+))?(?:-B(\d+))?(?:-A(\d+))?$/;
+
+            for (const release of releases) {
+              const tag = release.tag_name;
+              const match = tagRegex.exec(tag);
+
+              if (match) {
+                const [_, major, minor, patch = '0', candidate = '0', beta = '0', alpha = '0'] = match;
+
+                if (alpha !== '0') {
+                  if (!latestAlphaRelease || new Date(release.created_at) > new Date(latestAlphaRelease.release.created_at)) {
+                    latestAlphaRelease = { major, minor, patch, candidate, beta, alpha, release };
+                  }
+                } else if (beta !== '0') {
+                  if (!latestBetaRelease || new Date(release.created_at) > new Date(latestBetaRelease.release.created_at)) {
+                    latestBetaRelease = { major, minor, patch, candidate, beta, release };
+                  }
+                }
+              }
+            }
+
+            let nextMajor = 1;
+            let nextMinor = 0;
+            let nextPatch = 0;
+            let nextCandidate = 1;
+            let nextBeta = 1;
+            let nextAlpha = 1;
+
+            if (latestAlphaRelease) {
+              nextMajor = parseInt(latestAlphaRelease.major);
+              nextMinor = parseInt(latestAlphaRelease.minor);
+              nextPatch = parseInt(latestAlphaRelease.patch);
+              nextCandidate = parseInt(latestAlphaRelease.candidate);
+              nextBeta = parseInt(latestAlphaRelease.beta);
+              nextAlpha = parseInt(latestAlphaRelease.alpha) + 1;
+            } else if (latestBetaRelease) {
+              nextMajor = parseInt(latestBetaRelease.major);
+              nextMinor = parseInt(latestBetaRelease.minor);
+              nextPatch = parseInt(latestBetaRelease.patch);
+              nextCandidate = parseInt(latestBetaRelease.candidate);
+              nextBeta = parseInt(latestBetaRelease.beta) + 1;
+              nextAlpha = 1;
+            }
+
+            // Проверка, была ли выпущена новая бета после последней альфы
+            if (latestBetaRelease && latestAlphaRelease) {
+              if (new Date(latestBetaRelease.release.created_at) > new Date(latestAlphaRelease.release.created_at)) {
+                nextBeta = parseInt(latestBetaRelease.beta) + 1;
+                nextAlpha = 1;
+              }
+            }
+
+            core.setOutput('next_major', nextMajor);
+            core.setOutput('next_minor', nextMinor);
+            core.setOutput('next_patch', nextPatch);
+            core.setOutput('next_candidate', nextCandidate);
+            core.setOutput('next_beta', nextBeta);
+            core.setOutput('next_alpha', nextAlpha);
+
+            let tagName = `${nextMajor}.${nextMinor}`;
+            if (nextPatch > 0) {
+              tagName += `.${nextPatch}`;
+            }
+            tagName += `-C${nextCandidate}-B${nextBeta}-A${nextAlpha}`;
+
+            core.setOutput('tag_name', tagName);
+
+            const previousAlphaTag = latestAlphaRelease ? latestAlphaRelease.release.tag_name : '';
+            core.setOutput('previous_alpha_tag', previousAlphaTag);
+
+      - name: Установка Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Установка зависимостей
+        working-directory: ./.github
+        run: npm install
+
+      - name: Генерация списка изменений
+        id: generate_release_notes
+        working-directory: ./.github
+        run: node js/generate_release_notes.js
+        env:
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          previous_alpha_tag: ${{ steps.get_latest_release.outputs.previous_alpha_tag }}
+          next_alpha: ${{ steps.get_latest_release.outputs.next_alpha }}
+
+      - name: Создание архивов выпусков для каждой из версий игры
+        run: |
+          for version in 1.7 1.12 1.14 1.15 1.16 1.17 1.18 1.19 1.20 1.21; do
+            cd "Набор ресурсов/$version"
+            zip -r ../../Rus-For-Mods-$version-${{ steps.get_latest_release.outputs.tag_name }}.zip assets dynamicmcpack.json pack.mcmeta respackopts.json5
+            cd ../../
+            zip -j -g Rus-For-Mods-$version-${{ steps.get_latest_release.outputs.tag_name }}.zip "Набор ресурсов/pack.png" "Набор ресурсов/peruse_or_bruise.txt"
+          done
+
+          # Monifactory
+          cd "Сборки/Monifactory/Перевод/"
+          mkdir -p resourcepacks
+          cp ../../../Rus-For-Mods-1.20-${{ steps.get_latest_release.outputs.tag_name }}.zip resourcepacks/
+
+          # Создание файла options.txt
+          echo 'resourcePacks:["Rus-For-Mods-1.20-${{ steps.get_latest_release.outputs.tag_name }}.zip"]' > options.txt
+          echo 'lang:ru_ru' >> options.txt
+
+          zip -r ../../../Monifactory-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip .
+          cd ../../../
+      
+          # The Ferret Business
+          cd "Сборки/The Ferret Business/Перевод/"
+          mkdir -p resourcepacks
+          cp ../../../Rus-For-Mods-1.7-${{ steps.get_latest_release.outputs.tag_name }}.zip resourcepacks/
+
+          # Создание файла options.txt
+          echo 'resourcePacks:["Rus-For-Mods-1.7-${{ steps.get_latest_release.outputs.tag_name }}.zip"]' > options.txt
+          echo 'lang:ru_RU' >> options.txt
+
+          zip -r ../../../The-Ferret-Business-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip .
+          cd ../../../
+      
+          # GT New Horizons
+          cd "Сборки/GT New Horizons/Перевод/"
+          mkdir -p resourcepacks
+          cp ../../../Rus-For-Mods-1.7-${{ steps.get_latest_release.outputs.tag_name }}.zip resourcepacks/
+
+          # Создание файла options.txt
+          echo 'resourcePacks:["Rus-For-Mods-1.7-${{ steps.get_latest_release.outputs.tag_name }}.zip"]' > options.txt
+          echo 'lang:ru_RU' >> options.txt
+
+          zip -r ../../../GTNH-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip .
+          cd ../../../
+      
+          # All of Fabric 6
+          cd "Сборки/All of Fabric 6/Перевод/"
+          mkdir -p resourcepacks
+          cp ../../../Rus-For-Mods-1.19-${{ steps.get_latest_release.outputs.tag_name }}.zip resourcepacks/
+
+          # Создание файла options.txt
+          echo 'resourcePacks:["Rus-For-Mods-1.19-${{ steps.get_latest_release.outputs.tag_name }}.zip"]' > options.txt
+          echo 'lang:ru_ru' >> options.txt
+
+          zip -r ../../../All-Of-Fabric-6-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip .
+          cd ../../../
+
+          # Better MC 4
+          cd "Сборки/Better MC 4/Перевод/"
+          mkdir -p resourcepacks
+          cp ../../../Rus-For-Mods-1.20-${{ steps.get_latest_release.outputs.tag_name }}.zip resourcepacks/
+
+          # Создание файла options.txt
+          echo 'resourcePacks:["Rus-For-Mods-1.20-${{ steps.get_latest_release.outputs.tag_name }}.zip"]' > options.txt
+          echo 'lang:ru_ru' >> options.txt
+
+          zip -r ../../../BMC-4-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip .
+          cd ../../../
+
+      - name: Проверка на наличие тега без выпуска
+        id: check_tag
+        run: |
+          tag_name="${{ steps.get_latest_release.outputs.tag_name }}"
+          if git rev-parse "$tag_name" >/dev/null 2>&1; then
+            echo "::set-output name=tag_exists::true"
+          else
+            echo "::set-output name=tag_exists::false"
+          fi
+
+      - name: Удаление тега без выпуска
+        if: steps.check_tag.outputs.tag_exists == 'true'
+        run: |
+          tag_name="${{ steps.get_latest_release.outputs.tag_name }}"
+          release_exists=$(gh release list --repo "${{ github.repository }}" --tag "$tag_name" | wc -l)
+          if [ "$release_exists" -eq 0 ]; then
+            git tag -d "$tag_name"
+            git push --delete origin "$tag_name"
+          fi
+
+      - name: Создание тега для выпуска
+        id: create_tag
+        run: |
+          tag_name="${{ steps.get_latest_release.outputs.tag_name }}"
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git tag $tag_name
+          git push origin $tag_name
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Создание выпуска
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          body: ${{ steps.generate_release_notes.outputs.release_notes }}
+          tag_name: ${{ steps.get_latest_release.outputs.tag_name }}
+          name: ${{ steps.get_latest_release.outputs.next_alpha }}-я альфа
+          draft: false
+          prerelease: true
+
+      - name: Загрузка файлов в выпуск
+        run: |
+          assets=(
+            "Rus-For-Mods-1.7-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "Rus-For-Mods-1.12-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "Rus-For-Mods-1.14-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "Rus-For-Mods-1.15-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "Rus-For-Mods-1.16-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "Rus-For-Mods-1.17-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "Rus-For-Mods-1.18-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "Rus-For-Mods-1.19-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "Rus-For-Mods-1.20-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "Rus-For-Mods-1.21-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "Monifactory-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "The-Ferret-Business-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "GTNH-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "All-Of-Fabric-6-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+            "BMC-4-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip"
+          )
+
+          for asset in "${assets[@]}"; do
+            echo "Загрузка $asset..."
+            gh release upload ${{ steps.get_latest_release.outputs.tag_name }} "$asset" --repo "${{ github.repository }}"
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
