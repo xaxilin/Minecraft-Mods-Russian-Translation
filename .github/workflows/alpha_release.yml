@@ -214,6 +214,26 @@ jobs:
           zip -r ../../../BMC-4-Russian-Translation-${{ steps.get_latest_release.outputs.tag_name }}.zip .
           cd ../../../
 
+      - name: Проверка на наличие тега без выпуска
+        id: check_tag
+        run: |
+          tag_name="${{ steps.get_latest_release.outputs.tag_name }}"
+          if git rev-parse "$tag_name" >/dev/null 2>&1; then
+            echo "::set-output name=tag_exists::true"
+          else
+            echo "::set-output name=tag_exists::false"
+          fi
+
+      - name: Удаление тега без выпуска
+        if: steps.check_tag.outputs.tag_exists == 'true'
+        run: |
+          tag_name="${{ steps.get_latest_release.outputs.tag_name }}"
+          release_exists=$(gh release list --repo "${{ github.repository }}" --tag "$tag_name" | wc -l)
+          if [ "$release_exists" -eq 0 ]; then
+            git tag -d "$tag_name"
+            git push --delete origin "$tag_name"
+          fi
+
       - name: Создание тега для выпуска
         id: create_tag
         run: |
