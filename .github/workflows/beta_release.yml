@@ -1,4 +1,4 @@
-name: Выпуск
+name: Выпуск перевода
 
 on:
   workflow_dispatch:
