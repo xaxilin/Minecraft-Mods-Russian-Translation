@@ -21,6 +21,7 @@
     "item.ribbits.ribbit_nitwit_spawn_egg": "Яйцо призыва квакушки-деревенщины",
     "item.ribbits.ribbit_sorcerer_spawn_egg": "Яйцо призыва квакушки-волшебника",
     "itemGroup.ribbits.general": "Ribbits",
+    "ribbits.options.supporter_hat_button": "Шляпа поддержавшего Ribbits",
     "subtitles.entity.ribbit.ambient": "Квакушка квакает",
     "subtitles.entity.ribbit.death": "Квакушка умирает",
     "subtitles.entity.ribbit.hurt": "Квакушка ранен",
