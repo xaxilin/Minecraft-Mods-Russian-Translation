@@ -11,9 +11,9 @@
 | Значок | Описание |
 | :-: | :-: |
 | <img width=80 height=80 src="https://cdn.modrinth.com/data/zaRGNexp/035ba5c471850838ead4165e608eaa3c8cc23cbf_96.webp"> | <big>**[Mana and Artifice](https://modrinth.com/mod/zaRGNexp)**</big><br>1.20<br>*10 просьб* |
-| <img width=80 height=80 src="Ассеты/curseforge_mod_vector.svg"> | <big>**[The Abyss II - The Other Side](https://www.curseforge.com/minecraft/mc-mods/the-abyss-chapter-ii)**</big><br>1.20<br>*4 просьбы* |
-| <img width=80 height=80 src="Ассеты/curseforge_mod_vector.svg"> | <big>**[Apotheosis](https://www.curseforge.com/minecraft/mc-mods/apotheosis)**</big><br>1.20<br>*3 просьбы* |
-| <img width=80 height=80 src="Ассеты/curseforge_mod_vector.svg"> | <big>**[Feywild](https://www.curseforge.com/minecraft/mc-mods/feywild)**</big><br>1.20<br>*3 просьбы* |
+| <img width=80 height=80 src="/Ассеты/curseforge_mod_vector.svg"> | <big>**[The Abyss II - The Other Side](https://www.curseforge.com/minecraft/mc-mods/the-abyss-chapter-ii)**</big><br>1.20<br>*4 просьбы* |
+| <img width=80 height=80 src="/Ассеты/curseforge_mod_vector.svg"> | <big>**[Apotheosis](https://www.curseforge.com/minecraft/mc-mods/apotheosis)**</big><br>1.20<br>*3 просьбы* |
+| <img width=80 height=80 src="/Ассеты/curseforge_mod_vector.svg"> | <big>**[Feywild](https://www.curseforge.com/minecraft/mc-mods/feywild)**</big><br>1.20<br>*3 просьбы* |
 
 </div>
 
@@ -135,18 +135,18 @@
 
 <div align="center">
 <a href="https://modrinth.com/resourcepack/mods-ru">
-    <img height="35" src="Ассеты/modrinth_compact_vector.svg">
+    <img height="35" src="/Ассеты/modrinth_compact_vector.svg">
 </a>
 <a href="https://www.curseforge.com/minecraft/texture-packs/mods-ru">
-    <img height="35" src="Ассеты/curseforge_compact_vector.svg">
+    <img height="35" src="/Ассеты/curseforge_compact_vector.svg">
 <a href="https://www.planetminecraft.com/texture-pack/mods-russian-translation-6270800/">
-    <img height="35" src="Ассеты/planet_compact_vector.svg">
+    <img height="35" src="/Ассеты/planet_compact_vector.svg">
 </a>
 <a href="https://ru-minecraft.ru/fayly-dlya-minecraft/79004-mods-ru.html">
-    <img height="35" src="Ассеты/rumc_compact_vector.svg">
+    <img height="35" src="/Ассеты/rumc_compact_vector.svg">
 </a>
 <a href="https://vk.com/demipr">
-    <img height="35" src="Ассеты/vk_compact_vector.svg">
+    <img height="35" src="/Ассеты/vk_compact_vector.svg">
 </a>
 </a>
 </div>
