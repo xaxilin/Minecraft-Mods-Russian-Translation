@@ -165,9 +165,9 @@ async function generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastTag) 
     let description = `Это ${nextTagInfo.alphaNum}-я альфа-версия всех переводов проекта.\n\n`;
 
     if (lastTag && /^dev\d+$/.test(lastTag)) {
-        description += `Пререлизы были упразднены! Теперь пререлизы зовутся альфами. Про то, как теперь выходят ранние версии проекта, можете прочитать [здесь](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/alpha/%D0%A0%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE/%D0%98%D0%BC%D0%B5%D0%BD%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B2%D1%8B%D0%BF%D1%83%D1%81%D0%BA%D0%BE%D0%B2.md).\n\n`;
+        description += `Пререлизы были упразднены! Теперь пререлизы зовутся альфами. Про то, как теперь выходят ранние версии проекта, можете прочитать [здесь](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/alpha/Руководство/Именование%20выпусков.md).\n\n`;
     } else {
-        description += `Про то, как выходят ранние версии проекта, можете прочитать [здесь](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/alpha/%D0%A0%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE/%D0%98%D0%BC%D0%B5%D0%BD%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B2%D1%8B%D0%BF%D1%83%D1%81%D0%BA%D0%BE%D0%B2.md).\n\n`;
+        description += `Про то, как выходят ранние версии проекта, можете прочитать [здесь](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/alpha/Руководство/Именование%20выпусков.md).\n\n`;
     }
 
     const modChanges = await getModChanges(changedFiles, sheets);
@@ -176,7 +176,11 @@ async function generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastTag) 
 
     if (modChanges.length === 1) {
         const change = modChanges[0];
-        description += `В этой альфа-версии ${change.action} перевод мода [${change.name}](${change.url}) на Minecraft ${change.gameVer}.`;
+        // Преобразование первой буквы в нижний регистр
+        const actionLower = change.action.charAt(0).toLowerCase() + change.action.slice(1);
+        // Добавление «.x» к версии игры
+        const gameVersionWithX = change.gameVer + '.x';
+        description += `В этой альфа-версии ${actionLower} перевод мода [${change.name}](${change.url}) на Minecraft ${gameVersionWithX}.`;
     } else if (modChanges.length > 1) {
         description += `Изменения в этой версии:\n`;
         modChanges.forEach(change => {
