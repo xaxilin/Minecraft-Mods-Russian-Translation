@@ -53,7 +53,7 @@ const sheets = google.sheets({
         // 4. Получение списка изменённых файлов
         const changedFiles = getChangedFiles(lastAlphaTag);
 
-        console.log(`Измененные файлы:\n${changedFiles.map(f => `${f.status}\t${f.filePath}`).join('\n')}`);
+        console.log(`Изменённые файлы:\n${changedFiles.map(f => `${f.status}\t${f.filePath}`).join('\n')}`);
 
         // 5. Обработка изменений и формирование описания выпуска
         const releaseNotes = await generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastAlphaTag);
