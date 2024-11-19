@@ -16,6 +16,7 @@ on:
 
 jobs:
   build:
+    name: Сборка и выпуск
     runs-on: ubuntu-latest
 
     permissions:
