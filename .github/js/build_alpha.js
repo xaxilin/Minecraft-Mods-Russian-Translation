@@ -41,7 +41,7 @@ const sheets = google.sheets({
         console.log(`Всего тегов получено: ${tags.length}`);
 
         // 2. Нахождение последнего альфа-тега
-        const lastAlphaTag = getLastAlphaTag(tags.data);
+        const lastAlphaTag = getLastAlphaTag(tags);
 
         console.log(`Последний альфа-тег: ${lastAlphaTag}`);
 
