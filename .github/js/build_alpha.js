@@ -207,7 +207,7 @@ async function getModChanges(changedFiles, sheets) {
         }
     }
 
-
+    const uniqueGameVersions = [...new Set(newGameVersions)];
 
     console.log('Изменения в файлах:', modChanges);
     console.log('Новые затронутые версии Minecraft:', uniqueGameVersions);
@@ -235,6 +235,7 @@ async function generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastTag) 
 
     // Формирование общего списка изменений
     const allChanges = [];
+
     // Добавление текста о новой поддерживаемой версии Minecraft
     newGameVersions.forEach(gameVer => {
         allChanges.push(`Начат перевод модов для Minecraft ${gameVer}.x`);
