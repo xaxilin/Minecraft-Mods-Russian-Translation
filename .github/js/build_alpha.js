@@ -33,10 +33,12 @@ const sheets = google.sheets({
         console.log('Содержание каталога «Набор ресурсов»:', fs.readdirSync('Набор ресурсов'));
 
         // 1. Получение списка всех тегов
-        const tags = await octokit.rest.repos.listTags({
+        const tags = await octokit.paginate(octokit.rest.repos.listTags, {
             ...github.context.repo,
             per_page: 100,
         });
+
+        console.log(`Всего тегов получено: ${tags.length}`);
 
         // 2. Нахождение последнего альфа-тега
         const lastAlphaTag = getLastAlphaTag(tags.data);
