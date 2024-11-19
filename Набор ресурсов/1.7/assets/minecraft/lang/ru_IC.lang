@@ -292,11 +292,11 @@ texturePack.title=Select Texture Pack
 texturePack.folderInfo=(Place texture pack files here)
 texturePack.incompatible=Incompatible
 
-book.pageIndicator=Page %1$s of %2$s
-book.byAuthor=by %1$s
-book.signButton=Sign
-book.editTitle=Enter Book Title:
-book.finalizeButton=Sign and Close
+book.pageIndicator=Страница %1$s из %2$s
+book.byAuthor=Автор: %1$s
+book.signButton=Подписать
+book.editTitle=Введите заголовок книги:
+book.finalizeButton=Подписать и закрыть
 book.finalizeWarning=Note! When you sign the Book, it will no longer be editable.
 
 tile.stone.name=Stone
