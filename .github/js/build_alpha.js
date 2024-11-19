@@ -115,15 +115,21 @@ function getNextAlphaTag(lastTag) {
 
     if (lastTag) {
         const devMatch = lastTag.match(/^dev(\d+)$/);
-        const tagMatch = lastTag.match(/^(\d+)-C(\d+)-B(\d+)-A(\d+)$/);
+        const alphaTagMatch = lastTag.match(/^(\d+)-C(\d+)-B(\d+)-A(\d+)$/);
+        const betaTagMatch = lastTag.match(/^(\d+)-C(\d+)-B(\d+)$/);
 
         if (devMatch) {
             alphaNum = parseInt(devMatch[1]) + 1;
-        } else if (tagMatch) {
-            releaseNum = parseInt(tagMatch[1]);
-            candidateNum = parseInt(tagMatch[2]);
-            betaNum = parseInt(tagMatch[3]);
-            alphaNum = parseInt(tagMatch[4]) + 1;
+        } else if (alphaTagMatch) {
+            releaseNum = parseInt(alphaTagMatch[1]);
+            candidateNum = parseInt(alphaTagMatch[2]);
+            betaNum = parseInt(alphaTagMatch[3]);
+            alphaNum = parseInt(alphaTagMatch[4]) + 1;
+        } else if (betaTagMatch) {
+            releaseNum = parseInt(betaTagMatch[1]);
+            candidateNum = parseInt(betaTagMatch[2]);
+            betaNum = parseInt(betaTagMatch[3]) + 1; // Увеличивание номера беты
+            alphaNum = 1; // Сброс номера альфы
         }
     }
 
