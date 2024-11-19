@@ -1,4 +1,6 @@
-name: Выпуск перевода
+# Экшен для выпуска бета-пачки переводов
+
+name: Выпустить бету
 
 on:
   workflow_dispatch:
@@ -21,7 +23,7 @@ jobs:
 
     steps:
       - name: Клонирование репозитория
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Установка Python
         uses: actions/setup-python@v5

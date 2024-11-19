@@ -1,0 +1,43 @@
+# Экшен для выпуска альфа-пачки переводов
+
+name: Выпустить альфу
+
+on:
+  push:
+    branches:
+      - alpha
+    paths:
+      - "Набор ресурсов/**"
+      - "Сборки/Monifactory/Перевод/**"
+      - "Сборки/The Ferret Business/Перевод/**"
+      - "Сборки/All of Fabric 6/Перевод/**"
+      - "Сборки/GT New Horizons/Перевод/**"
+      - "Сборки/Better MC 4/Перевод/**"
+      - "Наборы шейдеров/**"
+  workflow_dispatch:
+
+jobs:
+  build_and_release:
+    name: Собрать и выпустить
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Клонирование репозитория
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Установка Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "16"
+
+      - name: Установка зависимостей
+        run: npm install
+
+      - name: Запуск сценария сборки
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+        working-directory: ./.github
+        run: node js/build_alpha.js
