@@ -18,7 +18,7 @@ on:
 
 jobs:
   build_and_release:
-    name: Собрать и выпустить
+    name: Сборка и выпуск
     runs-on: ubuntu-latest
 
     steps:
@@ -35,6 +35,9 @@ jobs:
       - name: Установка зависимостей
         run: npm install
         working-directory: .github
+
+      - name: Переход в корневой каталог
+        run: cd ../..
 
       - name: Запуск сценария сборки
         env:

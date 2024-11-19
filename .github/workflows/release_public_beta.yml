@@ -1,3 +1,8 @@
 # Экшен для выпуска бета-версий ресурспака на Modrinth и CurseForge
 
 name: Выпустить бету на сайты
+
+on:
+  workflow_dispatch:
+
+jobs:
