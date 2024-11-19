@@ -237,6 +237,14 @@ async function getModInfoFromSheet(modId, gameVer, sheets) {
 function createArchives(changedFiles, nextTagInfo) {
     const assets = [];
 
+    // Определение пути к releases на основе текущего рабочего каталога
+    const releasesDir = path.join(process.cwd(), 'releases');
+    if (!fs.existsSync(releasesDir)) {
+        fs.mkdirSync(releasesDir, {
+            recursive: true
+        });
+    }
+
     // Создание архивов для наборов ресурсов
     const resourcePackVersions = fs.readdirSync('Набор ресурсов').filter(ver => {
         return fs.statSync(path.join('Набор ресурсов', ver)).isDirectory();
@@ -244,7 +252,7 @@ function createArchives(changedFiles, nextTagInfo) {
 
     resourcePackVersions.forEach(ver => {
         const archiveName = `Rus-For-Mods-${ver}-${nextTagInfo.tag}.zip`;
-        const outputPath = path.join('releases', archiveName);
+        const outputPath = path.join(releasesDir, archiveName);
 
         const zip = new AdmZip();
 
@@ -265,6 +273,8 @@ function createArchives(changedFiles, nextTagInfo) {
         zip.addLocalFile('Набор ресурсов/peruse_or_bruise.txt');
         zip.writeZip(outputPath);
 
+        console.log(`Создан архив: ${outputPath}`);
+
         assets.push({
             path: outputPath,
             name: archiveName
@@ -279,12 +289,14 @@ function createArchives(changedFiles, nextTagInfo) {
     shaderPacks.forEach(pack => {
         // Преобразование название папки в формат названия файла
         const archiveName = `${pack.replace(/\s+/g, '-')}-Russian-Translation-${nextTagInfo.tag}.zip`;
-        const outputPath = path.join('releases', archiveName);
+        const outputPath = path.join(releasesDir, archiveName);
 
         const zip = new AdmZip();
 
         zip.addLocalFolder(path.join('Наборы шейдеров', pack));
         zip.writeZip(outputPath);
+
+        console.log(`Создан архив: ${outputPath}`);
 
         assets.push({
             path: outputPath,
@@ -304,12 +316,14 @@ function createArchives(changedFiles, nextTagInfo) {
 
         // Преобразование названия сборки в формат названия файла
         const archiveName = `${modpack.replace(/\s+/g, '-')}-Russian-Translation-${nextTagInfo.tag}.zip`;
-        const outputPath = path.join('releases', archiveName);
+        const outputPath = path.join(releasesDir, archiveName);
 
         const zip = new AdmZip();
 
         zip.addLocalFolder(translationPath);
         zip.writeZip(outputPath);
+
+        console.log(`Создан архив: ${outputPath}`);
 
         assets.push({
             path: outputPath,
