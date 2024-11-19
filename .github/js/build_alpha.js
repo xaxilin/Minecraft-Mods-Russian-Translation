@@ -40,45 +40,30 @@ const sheets = google.sheets({
 
         console.log(`Всего тегов получено: ${tags.length}`);
 
-        // 2. Получение последнего выпуска
-        const lastRelease = await getLastRelease(octokit, github.context.repo);
-        console.log(`Последний выпуск: ${lastRelease ? lastRelease.tag_name : 'Нет выпусков'}`);
+        // 2. Нахождение последнего альфа-тега
+        const lastAlphaTag = getLastAlphaTag(tags);
 
-        // 3. Парсинг версий из ассетов последнего выпуска
-        const fileVersions = {};
-        if (lastRelease && lastRelease.assets) {
-            lastRelease.assets.forEach(asset => {
-                const version = parseVersion(asset.name);
-                if (version) {
-                    // Извлечение gameVer из названия файла
-                    const match = asset.name.match(/Rus-For-Mods-(\d+\.\d+)-\d+-C\d+-B\d+-A\d+\.zip$/);
-                    if (match) {
-                        const gameVer = match[1];
-                        fileVersions[gameVer] = version;
-                    }
-                }
-            });
-        }
-        console.log('Текущие версии файлов:', fileVersions);
+        console.log(`Последний альфа-тег: ${lastAlphaTag}`);
 
-        // 4. Определение следующего тега
-        const nextTagInfo = getNextAlphaTagFromLastRelease(fileVersions);
+        // 3. Определение следующего тега
+        const nextTagInfo = getNextAlphaTag(lastAlphaTag);
+
         console.log(`Следующий тег: ${nextTagInfo.tag}`);
 
-        // 5. Получение списка изменённых файлов
-        const changedFiles = getChangedFiles(lastRelease ? lastRelease.tag_name : null);
+        // 4. Получение списка изменённых файлов
+        const changedFiles = getChangedFiles(lastAlphaTag);
 
         console.log(`Изменённые файлы:\n${changedFiles.map(f => `${f.status}\t${f.filePath}`).join('\n')}`);
 
-        // 6. Обработка изменений и формирование описания выпуска
-        const releaseNotes = await generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastRelease ? lastRelease.tag_name : null);
+        // 5. Обработка изменений и формирование описания выпуска
+        const releaseNotes = await generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastAlphaTag);
 
         console.log(`Описание выпуска:\n${releaseNotes}`);
 
-        // 7. Создание архивов
-        const assets = createArchives(changedFiles, nextTagInfo, fileVersions);
+        // 6. Создание архивов
+        const assets = createArchives(changedFiles, nextTagInfo);
 
-        // 8. Создание выпуска на Гитхабе
+        // 7. Создание выпуск на Гитхабе
         await createRelease(nextTagInfo, releaseNotes, assets);
 
         console.log('Выпуск успешно создан.');
@@ -324,9 +309,10 @@ async function getModInfoFromSheet(modId, gameVer, sheets) {
 }
 
 /// Функция для создания архивов
-function createArchives(changedFiles, nextTagInfo, fileVersions) {
+function createArchives(changedFiles, nextTagInfo) {
     const assets = [];
 
+    // Определение пути к releases на основе текущего рабочего каталога
     const releasesDir = path.join(process.cwd(), 'releases');
     if (!fs.existsSync(releasesDir)) {
         fs.mkdirSync(releasesDir, {
@@ -334,79 +320,102 @@ function createArchives(changedFiles, nextTagInfo, fileVersions) {
         });
     }
 
-    const directories = [{
-            dir: 'Набор ресурсов',
-            type: 'resourcePack'
-        },
-        {
-            dir: 'Наборы шейдеров',
-            type: 'shaderPack'
-        },
-        {
-            dir: 'Сборки',
-            type: 'modpack'
-        }
-    ];
+    // Создание архивов для наборов ресурсов
+    const resourcePackDir = 'Набор ресурсов';
+    if (fs.existsSync(resourcePackDir)) {
+        const resourcePackVersions = fs.readdirSync(resourcePackDir).filter(ver => {
+            return fs.statSync(path.join(resourcePackDir, ver)).isDirectory();
+        });
 
-    directories.forEach(directory => {
-        if (fs.existsSync(directory.dir)) {
-            const items = fs.readdirSync(directory.dir).filter(item => {
-                return fs.statSync(path.join(directory.dir, item)).isDirectory();
+        resourcePackVersions.forEach(ver => {
+            const archiveName = `Rus-For-Mods-${ver}-${nextTagInfo.tag}.zip`;
+            const outputPath = path.join(releasesDir, archiveName);
+
+            const zip = new AdmZip();
+
+            const versionDir = path.join('Набор ресурсов', ver);
+
+            // Добавление папки assets
+            const assetsPath = path.join(versionDir, 'assets');
+            if (fs.existsSync(assetsPath)) {
+                zip.addLocalFolder(assetsPath, 'assets');
+            }
+
+            // Добавление файлов из папки версии
+            ['pack.mcmeta', 'dynamicmcpack.json', 'respackopts.json5'].forEach(fileName => {
+                const filePath = path.join(versionDir, fileName);
+                if (fs.existsSync(filePath)) {
+                    zip.addLocalFile(filePath, '', fileName);
+                }
             });
 
-            items.forEach(item => {
-                const translationPath = directory.type === 'modpack' ? path.join(directory.dir, item, 'Перевод') : path.join(directory.dir, item);
-                if (directory.type === 'modpack' && !fs.existsSync(translationPath)) return;
+            zip.addLocalFile('Набор ресурсов/pack.png');
+            zip.addLocalFile('Набор ресурсов/peruse_or_bruise.txt');
+            zip.writeZip(outputPath);
 
-                // Определение gameVer из названия папки
-                const gameVerMatch = item.match(/\d+\.\d+/);
-                const gameVer = gameVerMatch ? gameVerMatch[0] : '1.0';
+            console.log(`Создан архив: ${outputPath}`);
 
-                // Получение текущей версии файла
-                let currentVersion = fileVersions[gameVer] || '1-C1-B1-A1';
-
-                // Проверка, изменён ли файл
-                const isChanged = changedFiles.some(file => file.filePath.includes(directory.dir) && file.filePath.includes(item));
-
-                if (isChanged) {
-                    currentVersion = incrementVersion(currentVersion);
-                    fileVersions[gameVer] = currentVersion;
-                }
-
-                // Формирование названия архива
-                const archiveName = `Rus-For-Mods-${gameVer}-${currentVersion}.zip`;
-                const outputPath = path.join(releasesDir, archiveName);
-                const zip = new AdmZip();
-
-                if (directory.type === 'resourcePack') {
-                    const assetsPath = path.join(directory.dir, item, 'assets');
-                    if (fs.existsSync(assetsPath)) {
-                        zip.addLocalFolder(assetsPath, 'assets');
-                    }
-                    ['pack.mcmeta', 'dynamicmcpack.json', 'respackopts.json5'].forEach(fileName => {
-                        const filePath = path.join(directory.dir, item, fileName);
-                        if (fs.existsSync(filePath)) {
-                            zip.addLocalFile(filePath, '', fileName);
-                        }
-                    });
-                    zip.addLocalFile(path.join(directory.dir, 'pack.png'));
-                    zip.addLocalFile(path.join(directory.dir, 'peruse_or_bruise.txt'));
-                } else if (directory.type === 'shaderPack') {
-                    zip.addLocalFolder(path.join(directory.dir, item));
-                } else if (directory.type === 'modpack') {
-                    zip.addLocalFolder(translationPath);
-                }
-
-                zip.writeZip(outputPath);
-                console.log(`Создан архив: ${outputPath}`);
-
-                assets.push({
-                    path: outputPath,
-                    name: archiveName
-                });
+            assets.push({
+                path: outputPath,
+                name: archiveName
             });
-        }
-    });
+        });
+    }
+
+    // Создание архивов для наборов шейдеров
+    const shaderPacksDir = 'Наборы шейдеров';
+    if (fs.existsSync(shaderPacksDir)) {
+        const shaderPacks = fs.readdirSync(shaderPacksDir).filter(pack => {
+            return fs.statSync(path.join(shaderPacksDir, pack)).isDirectory();
+        });
+
+        shaderPacks.forEach(pack => {
+            // Преобразование название папки в формат названия файла
+            const archiveName = `${pack.replace(/\s+/g, '-')}-Russian-Translation-${nextTagInfo.tag}.zip`;
+            const outputPath = path.join(releasesDir, archiveName);
+
+            const zip = new AdmZip();
+
+            zip.addLocalFolder(path.join(shaderPacksDir, pack));
+            zip.writeZip(outputPath);
+
+            console.log(`Создан архив: ${outputPath}`);
+
+            assets.push({
+                path: outputPath,
+                name: archiveName
+            });
+        });
+    }
+
+    // Создание архивов для сборок
+    const modpacksDir = 'Сборки';
+    if (fs.existsSync(modpacksDir)) {
+        const modpacks = fs.readdirSync(modpacksDir).filter(modpack => {
+            const translationPath = path.join(modpacksDir, modpack, 'Перевод');
+            return fs.existsSync(translationPath) && fs.statSync(translationPath).isDirectory();
+        });
+
+        modpacks.forEach(modpack => {
+            const translationPath = path.join(modpacksDir, modpack, 'Перевод');
+
+            // Преобразование названия сборки в формат названия файла
+            const archiveName = `${modpack.replace(/\s+/g, '-')}-Russian-Translation-${nextTagInfo.tag}.zip`;
+            const outputPath = path.join(releasesDir, archiveName);
+
+            const zip = new AdmZip();
+
+            zip.addLocalFolder(translationPath);
+            zip.writeZip(outputPath);
+
+            console.log(`Создан архив: ${outputPath}`);
+
+            assets.push({
+                path: outputPath,
+                name: archiveName
+            });
+        });
+    }
 
     return assets;
 }
@@ -438,59 +447,4 @@ async function createRelease(tagInfo, releaseNotes, assets) {
         });
         console.log(`Загружен ассет: ${asset.name}`);
     }
-}
-
-// Функция для получения последнего релиза
-async function getLastRelease(octokit, repo) {
-    const releases = await octokit.rest.repos.listReleases({
-        owner: repo.owner,
-        repo: repo.repo,
-        per_page: 1,
-        page: 1,
-    });
-    return releases.data[0];
-}
-
-// Функция для извлечения версии из названия файла
-function parseVersion(fileName) {
-    const regex = /Rus-For-Mods-\d+\.\d+-(\d+-C\d+-B\d+-A\d+)\.zip$/;
-    const match = fileName.match(regex);
-    if (match) {
-        return match[1]; // Возвращает часть версии, например, «1-C1-B1-A224»
-    }
-    return null;
-}
-
-// Функция для инкрементирования версии
-function incrementVersion(version) {
-    const parts = version.split('-A');
-    if (parts.length !== 2) return '1-C1-B1-A1';
-    const alphaNum = parseInt(parts[1]) + 1;
-    return `${parts[0]}-A${alphaNum}`;
-}
-
-// Функция для определения следующего тега на основе текущих версий файлов
-function getNextAlphaTagFromLastRelease(fileVersions) {
-    let maxAlpha = 0;
-    for (const version of Object.values(fileVersions)) {
-        const alphaMatch = version.match(/-A(\d+)$/);
-        if (alphaMatch) {
-            const alphaNum = parseInt(alphaMatch[1]);
-            if (alphaNum > maxAlpha) {
-                maxAlpha = alphaNum;
-            }
-        }
-    }
-    const newAlpha = maxAlpha + 1;
-    const newTag = `1-C1-B1-A${newAlpha}`;
-    const title = `${newAlpha}-я альфа`;
-
-    return {
-        tag: newTag,
-        title,
-        releaseNum: 1,
-        candidateNum: 1,
-        betaNum: 1,
-        alphaNum: newAlpha
-    };
 }
