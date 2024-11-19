@@ -194,12 +194,13 @@ async function getModChanges(changedFiles, sheets) {
     console.log('Обработанные файлы:', changedFiles);
 
     for (const file of changedFiles) {
-        console.log('Проверка файла:', file.filePath);
+        const decodedFilePath = decodeURIComponent(file.filePath);
+        console.log('Проверка файла:', decodedFilePath);
 
-        if (/^Набор ресурсов\/[^/]+\/assets\/[^/]+\/lang\/ru_ru\.json$/.test(file.filePath)) {
-            console.log('Файл соответствует шаблону:', file.filePath);
+        if (/^Набор ресурсов\/[^/]+\/assets\/[^/]+\/lang\/ru_ru\.json$/.test(decodedFilePath)) {
+            console.log('Файл соответствует шаблону:', decodedFilePath);
 
-            const parts = file.filePath.split('/');
+            const parts = decodedFilePath.split('/');
             const gameVer = parts[1];
             const modId = parts[3];
 
@@ -216,7 +217,7 @@ async function getModChanges(changedFiles, sheets) {
                 });
             }
         } else {
-            console.log('Файл не соответствует шаблону:', file.filePath);
+            console.log('Файл не соответствует шаблону:', decodedFilePath);
         }
     }
 
