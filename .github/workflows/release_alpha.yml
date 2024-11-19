@@ -34,6 +34,7 @@ jobs:
 
       - name: Установка зависимостей
         run: npm install
+        working-directory: .github
 
       - name: Запуск сценария сборки
         env:
