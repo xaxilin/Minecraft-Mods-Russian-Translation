@@ -197,14 +197,14 @@ async function getModChanges(changedFiles, sheets) {
         const decodedFilePath = decodeURIComponent(file.filePath.replace(/\\+/g, ''));
         console.log('Проверка файла:', decodedFilePath);
 
-        if (/^Набор ресурсов\/[^/]+\/assets\/[^/]+\/lang\/ru_ru\.json$/.test(decodedFilePath)) {
+        if (/^\u041d\u0430\u0431\u043e\u0440 \u0440\u0435\u0441\u0443\u0440\u0441\u043e\u0432\\/[^/]+\\/assets\\/[^/]+\\/lang\\/ru_ru\\.json$/.test(decodedFilePath)) {
             console.log('Файл соответствует шаблону:', decodedFilePath);
 
             const parts = decodedFilePath.split('/');
             const gameVer = parts[1];
             const modId = parts[3];
 
-            const action = file.status.startsWith('A') ? 'Добавлен' : 'Изменён';
+            const action = file.status.startsWith('A') ? '\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d' : '\u0418\u0437\u043c\u0435\u043d\u0451\u043d';
 
             const modInfo = await getModInfoFromSheet(modId, gameVer, sheets);
 
