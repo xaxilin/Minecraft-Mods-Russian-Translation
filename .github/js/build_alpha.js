@@ -370,6 +370,7 @@ async function createRelease(tagInfo, releaseNotes, assets) {
     const releaseResponse = await octokit.rest.repos.createRelease({
         ...github.context.repo,
         tag_name: tagInfo.tag,
+        target_commitish: github.context.sha,
         name: tagInfo.title,
         body: releaseNotes,
         draft: false,
