@@ -248,9 +248,20 @@ function createArchives(changedFiles, nextTagInfo) {
 
         const zip = new AdmZip();
 
-        zip.addLocalFolder(path.join('Набор ресурсов', ver), 'assets');
+        const versionDir = path.join('Набор ресурсов', ver);
+
+        // Добавление папки assets
+        zip.addLocalFolder(path.join(versionDir, 'assets'), 'assets');
+
+        // Добавление файлов из папки версии
+        ['pack.mcmeta', 'dynamicmcpack.json', 'respackopts.json5'].forEach(fileName => {
+            const filePath = path.join(versionDir, fileName);
+            if (fs.existsSync(filePath)) {
+                zip.addLocalFile(filePath, '', fileName);
+            }
+        });
+
         zip.addLocalFile('Набор ресурсов/pack.png');
-        zip.addLocalFile('Набор ресурсов/pack.mcmeta');
         zip.addLocalFile('Набор ресурсов/peruse_or_bruise.txt');
         zip.writeZip(outputPath);
 
