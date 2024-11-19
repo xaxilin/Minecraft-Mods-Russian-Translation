@@ -165,12 +165,14 @@ async function generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastTag) 
     let description = `Это ${nextTagInfo.alphaNum}-я альфа-версия всех переводов проекта.\n\n`;
 
     if (lastTag && /^dev\d+$/.test(lastTag)) {
-        description += `Пререлизы были упразднены! Теперь пререлизы зовутся альфами. Про то, как теперь выходят ранние версии проекта, можете прочитать [здесь](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/alpha/Памятки/Именование%20выпусков.md).\n\n`;
+        description += `Пререлизы были упразднены! Теперь пререлизы зовутся альфами. Про то, как теперь выходят ранние версии проекта, можете прочитать [здесь](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/alpha/%D0%A0%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE/%D0%98%D0%BC%D0%B5%D0%BD%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B2%D1%8B%D0%BF%D1%83%D1%81%D0%BA%D0%BE%D0%B2.md).\n\n`;
     } else {
-        description += `Про то, как выходят ранние версии проекта, можете прочитать [здесь](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/alpha/Памятки/Именование%20выпусков.md).\n\n`;
+        description += `Про то, как выходят ранние версии проекта, можете прочитать [здесь](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/alpha/%D0%A0%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE/%D0%98%D0%BC%D0%B5%D0%BD%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B2%D1%8B%D0%BF%D1%83%D1%81%D0%BA%D0%BE%D0%B2.md).\n\n`;
     }
 
     const modChanges = await getModChanges(changedFiles, sheets);
+
+    console.log('Изменения в файлах:', modChanges);
 
     if (modChanges.length === 1) {
         const change = modChanges[0];
@@ -189,13 +191,20 @@ async function generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastTag) 
 async function getModChanges(changedFiles, sheets) {
     const modChanges = [];
 
+    console.log('Обработанные файлы:', changedFiles);
+
     for (const file of changedFiles) {
-        if (/^Набор ресурсов\/[^/]+\/assets\/[^/]+\/lang\/ru_ru\.json$/.test(file.filePath)) {
-            const parts = file.filePath.split('/');
+        const decodedFilePath = decodeURIComponent(file.filePath.replace(/\\+/g, ''));
+        console.log('Проверка файла:', decodedFilePath);
+
+        if (/^\u041d\u0430\u0431\u043e\u0440 \u0440\u0435\u0441\u0443\u0440\u0441\u043e\u0432\\/[^/]+\\/assets\\/[^/]+\\/lang\\/ru_ru\\.json$/.test(decodedFilePath)) {
+            console.log('Файл соответствует шаблону:', decodedFilePath);
+
+            const parts = decodedFilePath.split('/');
             const gameVer = parts[1];
             const modId = parts[3];
 
-            const action = file.status.startsWith('A') ? 'Добавлен' : 'Изменён';
+            const action = file.status.startsWith('A') ? '\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d' : '\u0418\u0437\u043c\u0435\u043d\u0451\u043d';
 
             const modInfo = await getModInfoFromSheet(modId, gameVer, sheets);
 
@@ -207,9 +216,12 @@ async function getModChanges(changedFiles, sheets) {
                     gameVer,
                 });
             }
+        } else {
+            console.log('Файл не соответствует шаблону:', decodedFilePath);
         }
     }
 
+    console.log('Изменения в файлах:', modChanges);
     return modChanges;
 }
 
