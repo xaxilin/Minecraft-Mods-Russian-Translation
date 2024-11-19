@@ -172,6 +172,8 @@ async function generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastTag) 
 
     const modChanges = await getModChanges(changedFiles, sheets);
 
+    console.log('Изменения в файлах:', modChanges);
+
     if (modChanges.length === 1) {
         const change = modChanges[0];
         description += `В этой альфа-версии ${change.action} перевод мода [${change.name}](${change.url}) на Minecraft ${change.gameVer}.`;
@@ -189,8 +191,14 @@ async function generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastTag) 
 async function getModChanges(changedFiles, sheets) {
     const modChanges = [];
 
+    console.log('Обработанные файлы:', changedFiles);
+
     for (const file of changedFiles) {
+        console.log('Проверка файла:', file.filePath);
+
         if (/^Набор ресурсов\/[^/]+\/assets\/[^/]+\/lang\/ru_ru\.json$/.test(file.filePath)) {
+            console.log('Файл соответствует шаблону:', file.filePath);
+
             const parts = file.filePath.split('/');
             const gameVer = parts[1];
             const modId = parts[3];
@@ -207,9 +215,12 @@ async function getModChanges(changedFiles, sheets) {
                     gameVer,
                 });
             }
+        } else {
+            console.log('Файл не соответствует шаблону:', file.filePath);
         }
     }
 
+    console.log('Изменения в файлах:', modChanges);
     return modChanges;
 }
 
