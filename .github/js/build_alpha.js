@@ -194,7 +194,7 @@ async function getModChanges(changedFiles, sheets) {
     console.log('Обработанные файлы:', changedFiles);
 
     for (const file of changedFiles) {
-        const decodedFilePath = decodeURI(file.filePath);
+        const decodedFilePath = decodeURIComponent(file.filePath.replace(/\\+/g, ''));
         console.log('Проверка файла:', decodedFilePath);
 
         if (/^Набор ресурсов\/[^/]+\/assets\/[^/]+\/lang\/ru_ru\.json$/.test(decodedFilePath)) {
