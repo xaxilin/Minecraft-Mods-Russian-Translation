@@ -40,31 +40,31 @@ const sheets = google.sheets({
 
         console.log(`Всего тегов получено: ${tags.length}`);
 
-        // 2. Нахождение последнего альфа-тега
-        const lastAlphaTag = getLastAlphaTag(tags);
+        // 2. Нахождение последнего тега (альфа или бета)
+        const lastTag = getLastVersionTag(tags);
 
-        console.log(`Последний альфа-тег: ${lastAlphaTag}`);
+        console.log(`Последний тег: ${lastTag}`);
 
         // 3. Определение следующего тега
-        const nextTagInfo = getNextAlphaTag(lastAlphaTag);
+        const nextTagInfo = getNextAlphaTag(lastTag);
 
         console.log(`Следующий тег: ${nextTagInfo.tag}`);
 
         // 4. Получение списка изменённых файлов
-        const changedFiles = getChangedFiles(lastAlphaTag);
+        const changedFiles = getChangedFiles(lastTag);
 
         console.log(`Изменённые файлы:\n${changedFiles.map(f => `${f.status}\t${f.filePath}`).join('\n')}`);
 
         // 5. Обработка изменений и формирование описания выпуска
-        const releaseNotes = await generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastAlphaTag);
+        const releaseNotes = await generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastTag);
 
         console.log(`Описание выпуска:\n${releaseNotes}`);
 
         // 6. Получение версий архивов из предыдущего выпуска
-        const previousAssetVersions = await getPreviousAssetVersions(lastAlphaTag);
+        const previousAssetVersions = await getPreviousAssetVersions(lastTag);
 
         // 7. Создание архивов
-        const assets = createArchives(changedFiles, nextTagInfo, previousAssetVersions, lastAlphaTag);
+        const assets = createArchives(changedFiles, nextTagInfo, previousAssetVersions, lastTag);
 
         // 8. Создание выпуска на Гитхабе
         await createRelease(nextTagInfo, releaseNotes, assets);
@@ -75,30 +75,30 @@ const sheets = google.sheets({
     }
 })();
 
-// Функция для получения последнего альфа-тега
-function getLastAlphaTag(tags) {
-    const alphaTags = tags.filter(tag => /^(?:dev\d+|\d+-C\d+-B\d+-A\d+)$/.test(tag.name));
-    if (alphaTags.length === 0) return null;
+// Функция для получения последнего тега (альфа или бета)
+function getLastVersionTag(tags) {
+    const versionTags = tags.filter(tag => /^(?:dev\d+|\d+-C\d+-B\d+(?:-A\d+)?)$/.test(tag.name));
+    if (versionTags.length === 0) return null;
     // Сортировка по версии
-    alphaTags.sort((a, b) => {
-        const versionA = getAlphaVersionNumber(a.name);
-        const versionB = getAlphaVersionNumber(b.name);
+    versionTags.sort((a, b) => {
+        const versionA = getVersionNumber(a.name);
+        const versionB = getVersionNumber(b.name);
         return versionB - versionA;
     });
-    return alphaTags[0].name;
+    return versionTags[0].name;
 }
 
-// Функция для получения номера альфа-версии из тега
-function getAlphaVersionNumber(tag) {
+// Функция для получения номера версии из тега
+function getVersionNumber(tag) {
     const devMatch = tag.match(/^dev(\d+)$/);
     if (devMatch) return parseInt(devMatch[1]);
 
-    const tagMatch = tag.match(/^(\d+)-C(\d+)-B(\d+)-A(\d+)$/);
+    const tagMatch = tag.match(/^(\d+)-C(\d+)-B(\d+)(?:-A(\d+))?$/);
     if (tagMatch) {
         const releaseNum = parseInt(tagMatch[1]);
         const candidateNum = parseInt(tagMatch[2]);
         const betaNum = parseInt(tagMatch[3]);
-        const alphaNum = parseInt(tagMatch[4]);
+        const alphaNum = tagMatch[4] ? parseInt(tagMatch[4]) : 0;
         // Считаем общий номер версии для сортировки
         return ((releaseNum * 1000000) + (candidateNum * 10000) + (betaNum * 100) + alphaNum);
     }
@@ -115,21 +115,23 @@ function getNextAlphaTag(lastTag) {
 
     if (lastTag) {
         const devMatch = lastTag.match(/^dev(\d+)$/);
-        const alphaTagMatch = lastTag.match(/^(\d+)-C(\d+)-B(\d+)-A(\d+)$/);
-        const betaTagMatch = lastTag.match(/^(\d+)-C(\d+)-B(\d+)$/);
+        const tagMatch = lastTag.match(/^(\d+)-C(\d+)-B(\d+)(?:-A(\d+))?$/);
 
         if (devMatch) {
             alphaNum = parseInt(devMatch[1]) + 1;
-        } else if (alphaTagMatch) {
-            releaseNum = parseInt(alphaTagMatch[1]);
-            candidateNum = parseInt(alphaTagMatch[2]);
-            betaNum = parseInt(alphaTagMatch[3]);
-            alphaNum = parseInt(alphaTagMatch[4]) + 1;
-        } else if (betaTagMatch) {
-            releaseNum = parseInt(betaTagMatch[1]);
-            candidateNum = parseInt(betaTagMatch[2]);
-            betaNum = parseInt(betaTagMatch[3]) + 1; // Увеличивание номера беты
-            alphaNum = 1; // Сброс номера альфы
+        } else if (tagMatch) {
+            releaseNum = parseInt(tagMatch[1]);
+            candidateNum = parseInt(tagMatch[2]);
+            betaNum = parseInt(tagMatch[3]);
+
+            if (tagMatch[4]) {
+                // Если последний тег был альфа-версией, увеличиваем номер альфы
+                alphaNum = parseInt(tagMatch[4]) + 1;
+            } else {
+                // Если последний тег был бета-версией, увеличиваем номер беты и сбрасываем номер альфы
+                betaNum += 1;
+                alphaNum = 1;
+            }
         }
     }
 
