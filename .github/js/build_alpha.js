@@ -147,7 +147,9 @@ function getChangedFiles(lastTag) {
         diffCommand += ` HEAD~1 HEAD`;
     }
 
-    const diffOutput = execSync(diffCommand, { encoding: 'utf8' });
+    const diffOutput = execSync(diffCommand, {
+        encoding: 'utf8'
+    });
     const changedFiles = diffOutput.trim().split('\n').map(line => {
         const [status, ...fileParts] = line.split('\t');
         const filePath = fileParts.join('\t');
@@ -160,40 +162,10 @@ function getChangedFiles(lastTag) {
     return changedFiles;
 }
 
-// Функция для генерации описания выпуска
-async function generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastTag) {
-    let description = `Это ${nextTagInfo.alphaNum}-я альфа-версия всех переводов проекта.\n\n`;
-
-    if (lastTag && /^dev\d+$/.test(lastTag)) {
-        description += `Пререлизы были упразднены! Теперь пререлизы зовутся альфами. Про то, как теперь выходят ранние версии проекта, можете прочитать [здесь](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/alpha/Руководство/Именование%20выпусков.md).\n\n`;
-    } else {
-        description += `Про то, как выходят ранние версии проекта, можете прочитать [здесь](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/alpha/Руководство/Именование%20выпусков.md).\n\n`;
-    }
-
-    const modChanges = await getModChanges(changedFiles, sheets);
-
-    console.log('Изменения в файлах:', modChanges);
-
-    if (modChanges.length === 1) {
-        const change = modChanges[0];
-        // Преобразование первой буквы в нижний регистр
-        const actionLower = change.action.charAt(0).toLowerCase() + change.action.slice(1);
-        // Добавление «.x» к версии игры
-        const gameVersionWithX = change.gameVer + '.x';
-        description += `В этой альфа-версии ${actionLower} перевод мода [${change.name}](${change.url}) на Minecraft ${gameVersionWithX}.`;
-    } else if (modChanges.length > 1) {
-        description += `Изменения в этой версии:\n`;
-        modChanges.forEach(change => {
-            description += `* ${change.action} перевод мода [${change.name}](${change.url}) на Minecraft ${change.gameVer};\n`;
-        });
-    }
-
-    return description.trim();
-}
-
 // Функция для получения информации об изменениях модов
 async function getModChanges(changedFiles, sheets) {
     const modChanges = [];
+    const newGameVersions = [];
 
     console.log('Обработанные файлы:', changedFiles);
 
@@ -201,6 +173,16 @@ async function getModChanges(changedFiles, sheets) {
         const decodedFilePath = file.filePath;
         console.log('Проверка файла:', decodedFilePath);
 
+        // Проверка на добавление pack.mcmeta
+        const packMcmetaMatch = decodedFilePath.match(/^Набор ресурсов\/([^/]+)\/pack\.mcmeta$/);
+        if (packMcmetaMatch && file.status.startsWith('A')) {
+            const gameVer = packMcmetaMatch[1];
+            newGameVersions.push(gameVer);
+            console.log(`Добавлен pack.mcmeta для версии ${gameVer}`);
+            continue; // Переход к следующему файлу
+        }
+
+        // Проверка на языковые файлы модов
         if (/^Набор ресурсов\/[^/]+\/assets\/[^/]+\/lang\/ru_(RU|ru)\.(json|lang)$/.test(decodedFilePath)) {
             console.log('Файл соответствует шаблону:', decodedFilePath);
 
@@ -225,8 +207,63 @@ async function getModChanges(changedFiles, sheets) {
         }
     }
 
+
+
     console.log('Изменения в файлах:', modChanges);
-    return modChanges;
+    console.log('Новые затронутые версии Minecraft:', uniqueGameVersions);
+    return {
+        modChanges,
+        newGameVersions: uniqueGameVersions
+    };
+}
+
+// Функция для генерации описания выпуска
+async function generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastTag) {
+    let description = `Это ${nextTagInfo.alphaNum}-я альфа-версия всех переводов проекта.\n\n`;
+
+    if (lastTag && /^dev\d+$/.test(lastTag)) {
+        description += `Пререлизы были упразднены! Теперь пререлизы зовутся альфами. Про то, как теперь выходят ранние версии проекта, можете прочитать [здесь](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/alpha/Руководство/Именование%20выпусков.md).\n\n`;
+    } else {
+        description += `Про то, как выходят ранние версии проекта, можете прочитать [здесь](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/alpha/Руководство/Именование%20выпусков.md).\n\n`;
+    }
+
+    const {
+        modChanges,
+        newGameVersions
+    } = await getModChanges(changedFiles, sheets);
+
+
+    // Формирование общего списка изменений
+    const allChanges = [];
+    // Добавление текста о новой поддерживаемой версии Minecraft
+    newGameVersions.forEach(gameVer => {
+        allChanges.push(`Начат перевод модов для Minecraft ${gameVer}.x`);
+    });
+
+    // Добавление текста об изменениях в модах
+    modChanges.forEach(change => {
+        if (allChanges.length === 0 && modChanges.length === 1) {
+            // Если только одно изменение, не используем список
+            const actionLower = change.action.charAt(0).toLowerCase() + change.action.slice(1);
+            const gameVersionWithX = change.gameVer + '.x';
+            allChanges.push(`В этой альфа-версии ${actionLower} перевод мода [${change.name}](${change.url}) на Minecraft ${gameVersionWithX}.`);
+        } else {
+            // Используем списки с пунктами
+            const gameVersionWithX = change.gameVer + '.x';
+            allChanges.push(`${change.action} перевод мода [${change.name}](${change.url}) на Minecraft ${gameVersionWithX}`);
+        }
+    });
+
+    if (allChanges.length === 1) {
+        description += `${allChanges[0]}`;
+    } else if (allChanges.length > 1) {
+        description += `Изменения в этой версии:\n`;
+        allChanges.forEach(change => {
+            description += `* ${change};\n`;
+        });
+    }
+
+    return description.trim();
 }
 
 // Функция для получения информации о моде из Гугл-таблиц
