@@ -125,6 +125,8 @@ function getChangedFiles(lastTag) {
     let diffCommand = 'git diff --name-status';
     if (lastTag) {
         diffCommand += ` ${lastTag} HEAD`;
+    } else {
+        diffCommand += ` HEAD^ HEAD`;
     }
 
     const diffOutput = execSync(diffCommand).toString();
@@ -259,7 +261,10 @@ function createArchives(changedFiles, nextTagInfo) {
         const versionDir = path.join('Набор ресурсов', ver);
 
         // Добавление папки assets
-        zip.addLocalFolder(path.join(versionDir, 'assets'), 'assets');
+        const assetsPath = path.join(versionDir, 'assets');
+        if (fs.existsSync(assetsPath)) {
+            zip.addLocalFolder(assetsPath, 'assets');
+        }
 
         // Добавление файлов из папки версии
         ['pack.mcmeta', 'dynamicmcpack.json', 'respackopts.json5'].forEach(fileName => {
@@ -282,54 +287,85 @@ function createArchives(changedFiles, nextTagInfo) {
     });
 
     // Создание архивов для наборов шейдеров
-    const shaderPacks = fs.readdirSync('Наборы шейдеров').filter(pack => {
-        return fs.statSync(path.join('Наборы шейдеров', pack)).isDirectory();
-    });
-
-    shaderPacks.forEach(pack => {
-        // Преобразование название папки в формат названия файла
-        const archiveName = `${pack.replace(/\s+/g, '-')}-Russian-Translation-${nextTagInfo.tag}.zip`;
-        const outputPath = path.join(releasesDir, archiveName);
-
-        const zip = new AdmZip();
-
-        zip.addLocalFolder(path.join('Наборы шейдеров', pack));
-        zip.writeZip(outputPath);
-
-        console.log(`Создан архив: ${outputPath}`);
-
-        assets.push({
-            path: outputPath,
-            name: archiveName
+    if (fs.existsSync('Наборы шейдеров')) {
+        const shaderPacks = fs.readdirSync('Наборы шейдеров').filter(pack => {
+            return fs.statSync(path.join('Наборы шейдеров', pack)).isDirectory();
         });
-    });
+
+        shaderPacks.forEach(pack => {
+            // Преобразование название папки в формат названия файла
+            const archiveName = `${pack.replace(/\s+/g, '-')}-Russian-Translation-${nextTagInfo.tag}.zip`;
+            const outputPath = path.join(releasesDir, archiveName);
+
+            const zip = new AdmZip();
+
+            zip.addLocalFolder(path.join('Наборы шейдеров', pack));
+            zip.writeZip(outputPath);
+
+            console.log(`Создан архив: ${outputPath}`);
+
+            assets.push({
+                path: outputPath,
+                name: archiveName
+            });
+        });
+    }
 
     // Создание архивов для сборок
     const modpacksDir = 'Сборки';
-    const modpacks = fs.readdirSync(modpacksDir).filter(modpack => {
-        const translationPath = path.join(modpacksDir, modpack, 'Перевод');
-        return fs.existsSync(translationPath) && fs.statSync(translationPath).isDirectory();
-    });
-
-    modpacks.forEach(modpack => {
-        const translationPath = path.join(modpacksDir, modpack, 'Перевод');
-
-        // Преобразование названия сборки в формат названия файла
-        const archiveName = `${modpack.replace(/\s+/g, '-')}-Russian-Translation-${nextTagInfo.tag}.zip`;
-        const outputPath = path.join(releasesDir, archiveName);
-
-        const zip = new AdmZip();
-
-        zip.addLocalFolder(translationPath);
-        zip.writeZip(outputPath);
-
-        console.log(`Создан архив: ${outputPath}`);
-
-        assets.push({
-            path: outputPath,
-            name: archiveName
+    if (fs.existsSync(modpacksDir)) {
+        const modpacks = fs.readdirSync(modpacksDir).filter(modpack => {
+            const translationPath = path.join(modpacksDir, modpack, 'Перевод');
+            return fs.existsSync(translationPath) && fs.statSync(translationPath).isDirectory();
         });
-    });
+
+        modpacks.forEach(modpack => {
+            const translationPath = path.join(modpacksDir, modpack, 'Перевод');
+
+            // Преобразование названия сборки в формат названия файла
+            const archiveName = `${modpack.replace(/\s+/g, '-')}-Russian-Translation-${nextTagInfo.tag}.zip`;
+            const outputPath = path.join(releasesDir, archiveName);
+
+            const zip = new AdmZip();
+
+            zip.addLocalFolder(translationPath);
+            zip.writeZip(outputPath);
+
+            console.log(`Создан архив: ${outputPath}`);
+
+            assets.push({
+                path: outputPath,
+                name: archiveName
+            });
+        });
+    }
 
     return assets;
+}
+
+// Функция для создания выпуска на Гитхабе
+async function createRelease(tagInfo, releaseNotes, assets) {
+    const releaseResponse = await octokit.rest.repos.createRelease({
+        ...github.context.repo,
+        tag_name: tagInfo.tag,
+        name: tagInfo.title,
+        body: releaseNotes,
+        draft: false,
+        prerelease: true,
+    });
+
+    const uploadUrl = releaseResponse.data.upload_url;
+
+    for (const asset of assets) {
+        const content = fs.readFileSync(asset.path);
+        await octokit.rest.repos.uploadReleaseAsset({
+            url: uploadUrl,
+            headers: {
+                'content-type': 'application/zip',
+                'content-length': content.length,
+            },
+            name: asset.name,
+            data: content,
+        });
+    }
 }
