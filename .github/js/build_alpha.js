@@ -259,8 +259,9 @@ async function generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastTag) 
         description += `${allChanges[0]}`;
     } else if (allChanges.length > 1) {
         description += `Изменения в этой версии:\n`;
-        allChanges.forEach(change => {
-            description += `* ${change};\n`;
+        allChanges.forEach((change, index) => {
+            const separator = index === allChanges.length - 1 ? '.' : ';';
+            description += `* ${change}${separator}\n`;
         });
     }
 
