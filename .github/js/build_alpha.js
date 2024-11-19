@@ -139,7 +139,7 @@ function getNextAlphaTag(lastTag) {
 
 // Функция для получения списка изменённых файлов
 function getChangedFiles(lastTag) {
-    let diffCommand = 'git diff --name-status';
+    let diffCommand = 'git -c core.quotepath=false -c i18n.logOutputEncoding=UTF-8 diff --name-status';
     if (lastTag) {
         diffCommand += ` ${lastTag} HEAD`;
     } else {
@@ -147,7 +147,7 @@ function getChangedFiles(lastTag) {
         diffCommand += ` HEAD~1 HEAD`;
     }
 
-    const diffOutput = execSync(diffCommand, { encoding: 'utf8' }).toString();
+    const diffOutput = execSync(diffCommand, { encoding: 'utf8' });
     const changedFiles = diffOutput.trim().split('\n').map(line => {
         const [status, ...fileParts] = line.split('\t');
         const filePath = fileParts.join('\t');
