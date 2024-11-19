@@ -197,7 +197,7 @@ async function getModChanges(changedFiles, sheets) {
         const decodedFilePath = decodeURIComponent(file.filePath.replace(/\\+/g, ''));
         console.log('Проверка файла:', decodedFilePath);
 
-        if (/^\u041d\u0430\u0431\u043e\u0440 \u0440\u0435\u0441\u0443\u0440\u0441\u043e\u0432\\/[^/]+\\/assets\\/[^/]+\\/lang\\/ru_ru\\.json$/.test(decodedFilePath)) {
+        if (/^\u041d\u0430\u0431\u043e\u0440\u0020\u0440\u0435\u0441\u0443\u0440\u0441\u043e\u0432\/[^/]+\/assets\/[^/]+\/lang\/ru_ru\.json$/.test(decodedFilePath)) {
             console.log('Файл соответствует шаблону:', decodedFilePath);
 
             const parts = decodedFilePath.split('/');
