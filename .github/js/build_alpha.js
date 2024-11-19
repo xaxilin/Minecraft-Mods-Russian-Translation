@@ -43,14 +43,22 @@ const sheets = google.sheets({
         // 2. Нахождение последнего альфа-тега
         const lastAlphaTag = getLastAlphaTag(tags.data);
 
+        console.log(`Последний альфа-тег: ${lastAlphaTag}`);
+
         // 3. Определение следующего тега
         const nextTagInfo = getNextAlphaTag(lastAlphaTag);
+
+        console.log(`Следующий тег: ${nextTagInfo.tag}`);
 
         // 4. Получение списка изменённых файлов
         const changedFiles = getChangedFiles(lastAlphaTag);
 
+        console.log(`Измененные файлы:\n${changedFiles.map(f => `${f.status}\t${f.filePath}`).join('\n')}`);
+
         // 5. Обработка изменений и формирование описания выпуска
         const releaseNotes = await generateReleaseNotes(changedFiles, sheets, nextTagInfo, lastAlphaTag);
+
+        console.log(`Описание выпуска:\n${releaseNotes}`);
 
         // 6. Создание архивов
         const assets = createArchives(changedFiles, nextTagInfo);
@@ -66,7 +74,7 @@ const sheets = google.sheets({
 
 // Функция для получения последнего альфа-тега
 function getLastAlphaTag(tags) {
-    const alphaTags = tags.filter(tag => /(?:dev\d+|\d+-C\d+-B\d+-A\d+)$/.test(tag.name));
+    const alphaTags = tags.filter(tag => /^(?:dev\d+|\d+-C\d+-B\d+-A\d+)$/.test(tag.name));
     if (alphaTags.length === 0) return null;
     // Сортировка по версии
     alphaTags.sort((a, b) => {
@@ -82,8 +90,15 @@ function getAlphaVersionNumber(tag) {
     const devMatch = tag.match(/^dev(\d+)$/);
     if (devMatch) return parseInt(devMatch[1]);
 
-    const alphaMatch = tag.match(/-A(\d+)$/);
-    if (alphaMatch) return parseInt(alphaMatch[1]);
+    const tagMatch = tag.match(/^(\d+)-C(\d+)-B(\d+)-A(\d+)$/);
+    if (tagMatch) {
+        const releaseNum = parseInt(tagMatch[1]);
+        const candidateNum = parseInt(tagMatch[2]);
+        const betaNum = parseInt(tagMatch[3]);
+        const alphaNum = parseInt(tagMatch[4]);
+        // Считаем общий номер версии для сортировки
+        return ((releaseNum * 1000000) + (candidateNum * 10000) + (betaNum * 100) + alphaNum);
+    }
 
     return 0;
 }
@@ -128,7 +143,8 @@ function getChangedFiles(lastTag) {
     if (lastTag) {
         diffCommand += ` ${lastTag} HEAD`;
     } else {
-        diffCommand += ` HEAD^ HEAD`;
+        // Если нет предыдущего тега, получаем изменения в последнем коммите
+        diffCommand += ` HEAD~1 HEAD`;
     }
 
     const diffOutput = execSync(diffCommand).toString();
@@ -174,7 +190,7 @@ async function getModChanges(changedFiles, sheets) {
     const modChanges = [];
 
     for (const file of changedFiles) {
-        if (/^Набор ресурсов\/.+\/assets\/.+\/lang\/ru_ru\.json$/.test(file.filePath)) {
+        if (/^Набор ресурсов\/[^/]+\/assets\/[^/]+\/lang\/ru_ru\.json$/.test(file.filePath)) {
             const parts = file.filePath.split('/');
             const gameVer = parts[1];
             const modId = parts[3];
@@ -250,48 +266,52 @@ function createArchives(changedFiles, nextTagInfo) {
     }
 
     // Создание архивов для наборов ресурсов
-    const resourcePackVersions = fs.readdirSync('Набор ресурсов').filter(ver => {
-        return fs.statSync(path.join('Набор ресурсов', ver)).isDirectory();
-    });
+    const resourcePackDir = 'Набор ресурсов';
+    if (fs.existsSync(resourcePackDir)) {
+        const resourcePackVersions = fs.readdirSync(resourcePackDir).filter(ver => {
+            return fs.statSync(path.join(resourcePackDir, ver)).isDirectory();
+        });
 
-    resourcePackVersions.forEach(ver => {
-        const archiveName = `Rus-For-Mods-${ver}-${nextTagInfo.tag}.zip`;
-        const outputPath = path.join(releasesDir, archiveName);
+        resourcePackVersions.forEach(ver => {
+            const archiveName = `Rus-For-Mods-${ver}-${nextTagInfo.tag}.zip`;
+            const outputPath = path.join(releasesDir, archiveName);
 
-        const zip = new AdmZip();
+            const zip = new AdmZip();
 
-        const versionDir = path.join('Набор ресурсов', ver);
+            const versionDir = path.join('Набор ресурсов', ver);
 
-        // Добавление папки assets
-        const assetsPath = path.join(versionDir, 'assets');
-        if (fs.existsSync(assetsPath)) {
-            zip.addLocalFolder(assetsPath, 'assets');
-        }
-
-        // Добавление файлов из папки версии
-        ['pack.mcmeta', 'dynamicmcpack.json', 'respackopts.json5'].forEach(fileName => {
-            const filePath = path.join(versionDir, fileName);
-            if (fs.existsSync(filePath)) {
-                zip.addLocalFile(filePath, '', fileName);
+            // Добавление папки assets
+            const assetsPath = path.join(versionDir, 'assets');
+            if (fs.existsSync(assetsPath)) {
+                zip.addLocalFolder(assetsPath, 'assets');
             }
+
+            // Добавление файлов из папки версии
+            ['pack.mcmeta', 'dynamicmcpack.json', 'respackopts.json5'].forEach(fileName => {
+                const filePath = path.join(versionDir, fileName);
+                if (fs.existsSync(filePath)) {
+                    zip.addLocalFile(filePath, '', fileName);
+                }
+            });
+
+            zip.addLocalFile('Набор ресурсов/pack.png');
+            zip.addLocalFile('Набор ресурсов/peruse_or_bruise.txt');
+            zip.writeZip(outputPath);
+
+            console.log(`Создан архив: ${outputPath}`);
+
+            assets.push({
+                path: outputPath,
+                name: archiveName
+            });
         });
-
-        zip.addLocalFile('Набор ресурсов/pack.png');
-        zip.addLocalFile('Набор ресурсов/peruse_or_bruise.txt');
-        zip.writeZip(outputPath);
-
-        console.log(`Создан архив: ${outputPath}`);
-
-        assets.push({
-            path: outputPath,
-            name: archiveName
-        });
-    });
+    }
 
     // Создание архивов для наборов шейдеров
-    if (fs.existsSync('Наборы шейдеров')) {
-        const shaderPacks = fs.readdirSync('Наборы шейдеров').filter(pack => {
-            return fs.statSync(path.join('Наборы шейдеров', pack)).isDirectory();
+    const shaderPacksDir = 'Наборы шейдеров';
+    if (fs.existsSync(shaderPacksDir)) {
+        const shaderPacks = fs.readdirSync(shaderPacksDir).filter(pack => {
+            return fs.statSync(path.join(shaderPacksDir, pack)).isDirectory();
         });
 
         shaderPacks.forEach(pack => {
@@ -301,7 +321,7 @@ function createArchives(changedFiles, nextTagInfo) {
 
             const zip = new AdmZip();
 
-            zip.addLocalFolder(path.join('Наборы шейдеров', pack));
+            zip.addLocalFolder(path.join(shaderPacksDir, pack));
             zip.writeZip(outputPath);
 
             console.log(`Создан архив: ${outputPath}`);
@@ -369,5 +389,6 @@ async function createRelease(tagInfo, releaseNotes, assets) {
             name: asset.name,
             data: content,
         });
+        console.log(`Загружен ассет: ${asset.name}`);
     }
 }
