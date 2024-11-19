@@ -28,6 +28,10 @@ const sheets = google.sheets({
 // Основная функция
 (async () => {
     try {
+        console.log('Текущий рабочий каталог:', process.cwd());
+        console.log('Содержание корневого каталога:', fs.readdirSync('.'));
+        console.log('Содержание каталога «Набор ресурсов»:', fs.readdirSync('Набор ресурсов'));
+
         // 1. Получение списка всех тегов
         const tags = await octokit.rest.repos.listTags({
             ...github.context.repo,
