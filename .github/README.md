@@ -6,7 +6,7 @@
     <br>
     <img title="Никак не связано с «Фаргус Мультимедия». Это просто добрая отсылка. Я работаю над переводами один с 2020 года, лишь изредка получая помощь от народа (хотелось бы, конечно, больше вклада от Интернета, но имеем, что имеем)." src="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/beta/%D0%90%D1%81%D1%81%D0%B5%D1%82%D1%8B/fargus_cozy_vector.svg?raw=true" height="55">
     <a href="https://modrinth.com/mod/dynamicpack"><img title="Хороший мод, хороший разработчик ❤️" src="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/beta/%D0%90%D1%81%D1%81%D0%B5%D1%82%D1%8B/dynamicpack_cozy_vector.svg?raw=true" height="55"></a>
-    <a href="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/beta/%D0%90%D1%81%D1%81%D0%B5%D1%82%D1%8B/dynamicpack_cozy_vector.svg?raw=true https://modrinth.com/mod/better-resource-pack-sorting"><img title="Очень удобный мод" src="Ассеты/brps_cozy_vector.svg" height="55"></a>
+    <a href="https://modrinth.com/mod/better-resource-pack-sorting"><img title="Очень удобный мод" src="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/beta/%D0%90%D1%81%D1%81%D0%B5%D1%82%D1%8B/brps_cozy_vector.svg?raw=true" height="55"></a>
     <br>
     <br>
     <!--<a href="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/wiki/%D0%9F%D0%BE%D0%BC%D0%BE%D1%89%D1%8C-%D1%81-%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D0%BE%D0%BC">
