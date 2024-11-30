@@ -12,6 +12,7 @@
     "iris.shaders.debug.enabled": "Отладка включена, ведение журнала будет более подробным!",
     "iris.shaders.debug.failure": "Невозможно включить отладку, ваш компьютер не поддерживает отладочные функции.",
     "iris.shaders.debug.restart": "Отсутствует отладочный контекст. Пожалуйста, перезапустите игру, чтобы включить отладку клиента OpenGL.",
+    "iris.shaders.debug.restartNoDebug": "Отладка шейдеров включена. Отладка OpenGL не поддерживается на NeoForge.",
     "iris.shaders.disabled": "Шейдеры отключены!",
     "iris.shaders.reloaded": "Шейдеры перезагружены!",
     "iris.shaders.reloaded.failure": "Не удалось перезагрузить шейдеры! Причина: %s.",
