@@ -1,7 +1,0 @@
-{
-    "condition": "!modsru.general.removeEllipsis & !modsru.general.fixAftercolonWordsCase",
-    "fallbacks": [
-        "assets/all_the_fan_made_discs/lang/ru_ru_alt/ru_ru_correct_case_no_ellipsis.json",
-        "assets/all_the_fan_made_discs/lang/ru_ru_alt/ru_ru_no_ellipsis.json"
-    ]
-}

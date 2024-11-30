@@ -1,4 +1,0 @@
-{
-    "condition": "general.removeEllipsis",
-    "fallback": "assets\minecraft\lang\ru_ru.json"
-}
