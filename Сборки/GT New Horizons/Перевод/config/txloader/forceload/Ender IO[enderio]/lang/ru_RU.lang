@@ -221,10 +221,11 @@ enderio.coolant.tooltip.heading=Хладагент
 enderio.coolant.tooltip.degreesPerBucket=Градус за ведро
 enderio.gas.gasTick=Газ/тик
 
-#Materials
+# Материалы
+
 enderio.itemMachinePart.name=Детали механизма
 enderio.machineChassi.name=Корпус механизма
-enderio.basicGear.name=Основная шестерня
+enderio.basicGear.name=Основное зубчатое колесо
 enderio.soulMachineChassi.name=Корпус механизма из призрачного сплава
 enderio.endSteelMachineChassi.name=Корпус механизма из стали Энда
 enderio.pulsatingCrystal.name=Пульсирующий кристалл

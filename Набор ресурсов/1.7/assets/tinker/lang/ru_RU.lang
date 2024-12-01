@@ -267,7 +267,7 @@ item.tconstruct.MetalPattern.shuriken.name=Слепок сюрикэна
 item.tconstruct.MetalPattern.crossbowlimb.name=Слепок плеча арбалета
 item.tconstruct.MetalPattern.crossbowbody.name=Слепок основы арбалета
 item.tconstruct.MetalPattern.bowlimb.name=Слепок плеча лука
-item.tconstruct.GearPattern.name=Слепок шестерни
+item.tconstruct.GearPattern.name=Слепок зубчатого колеса
 
 item.tconstruct.Materials.PaperStack.name=Кучка бумаги
 item.tconstruct.Materials.SlimeCrystal.name=Слизневый кристалл

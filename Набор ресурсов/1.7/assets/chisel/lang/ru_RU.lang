@@ -369,7 +369,7 @@ tile.technical.6.desc=Вентилятор (выкл.)
 tile.technical.7.desc=Отверстия
 tile.technical.8.desc=Светящиеся отверстия
 tile.technical.9.desc=Изоляция
-tile.technical.10.desc=Шестерни и маховики
+tile.technical.10.desc=Зубчатые колёса и маховики
 tile.technical.11.desc=Провода
 tile.technical.12.desc=Ржавая панель
 tile.technical.13.desc=Решётка
@@ -744,18 +744,20 @@ tile.concrete.8.desc=Частично выветрившийся бетон
 tile.concrete.9.desc=Частично выветрившийся бетонный блок
 tile.concrete.10.desc=Асфальт
 
-#Road Line
+# Road Line
+
 tile.chisel.road_line.name=Дорожные линии
 tile.roadLine.0.desc=Белые
 tile.roadLine.1.desc=Жёлтые
 tile.roadLine.2.desc=Двойные белые
 tile.roadLine.3.desc=Двойные жёлтые
 
-#Iron Blocks
+# Iron Blocks
+
 tile.chisel.iron_block.name=Железный блок
 tile.iron.1.desc=Большие железные слитки
 tile.iron.2.desc=Маленькие железные слитки
-tile.iron.3.desc=Железные шестерни
+tile.iron.3.desc=Железные зубчатые колёса
 tile.iron.4.desc=Железные кирпичи
 tile.iron.5.desc=Железные пластины
 tile.iron.6.desc=Железные пластины с заклёпками
@@ -769,7 +771,8 @@ tile.iron.13.desc=Железная Луна в обсидиане
 tile.iron.14.desc=Железные разрезы
 tile.iron.15.desc=Простой железный блок
 
-#Gold Blocks
+# Gold Blocks
+
 tile.chisel.gold_block.name=Золотой блок
 tile.gold.1.desc=Большие золотые слитки
 tile.gold.2.desc=Маленькие золотые слитки

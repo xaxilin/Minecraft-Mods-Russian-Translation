@@ -320,7 +320,7 @@ item.tconstruct.cast_custom.ingot.name=Отливка слитка
 item.tconstruct.cast_custom.nugget.name=Отливка самородка
 item.tconstruct.cast_custom.gem.name=Отливка камня
 item.tconstruct.cast_custom.plate.name=Отливка пластины
-item.tconstruct.cast_custom.gear.name=Отливка шестерни
+item.tconstruct.cast_custom.gear.name=Отливка зубчатого колеса
 
 item.tconstruct.sharpening_kit.name=оселок
 item.tconstruct.sharpening_kit.tooltip=Объедините с кремнем и инструментом\nдля увеличения до уровня добычи этого материала.
@@ -328,6 +328,7 @@ item.tconstruct.sharpening_kit.tooltip=Объедините с кремнем и
 item.forge.bucketFilled.blood=Ведро крови
 
 # Инструменты
+
 item.tconstruct.pickaxe.name=кирка
 item.tconstruct.shovel.name=лопата
 item.tconstruct.hatchet.name=топор
@@ -363,6 +364,7 @@ item.tconstruct.bolt.name=болт
 item.tconstruct.shuriken.name=сюрикен
 
 # Инструментальные части
+
 item.tconstruct.shard.name=осколок
 
 item.tconstruct.pick_head.name=навершие кирки

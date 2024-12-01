@@ -127,7 +127,7 @@
 	"ftbquests.quest.appearance.shape.hexagon": "Шестиугольник",
 	"ftbquests.quest.appearance.shape.octagon": "Восьмиугольник",
 	"ftbquests.quest.appearance.shape.heart": "Сердце",
-	"ftbquests.quest.appearance.shape.gear": "Шестерня",
+	"ftbquests.quest.appearance.shape.gear": "Зубчатое колесо",
 	"ftbquests.quest.misc.can_repeat": "Можно повторить",
 	"ftbquests.quest.tasks_ignore_dependencies": "Задачи игнорируют зависимости",
 	"ftbquests.quest.tasks_ignore_dependencies.tooltip": "Разрешить запускать задачи без заполнения зависимостей",
