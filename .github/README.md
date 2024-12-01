@@ -362,72 +362,79 @@
 <small>(плашка сделана с помощью [contrib.rocks](https://contrib.rocks))</small>
 </div>
 
-* [**Дефлекта**](https://github.com/RushanM): большая часть переводов
-* [**1the_same_cat1**](https://www.curseforge.com/members/1the_same_cat1): предложил переводы модов
-* * [Simple Corinthium](https://www.curseforge.com/minecraft/mc-mods/simple-corinthium)
-* * [Simple Weapons for Better Combat](https://www.curseforge.com/minecraft/mc-mods/simple-weapons-for-better-combat)
-* * [Rotten Creatures](https://modrinth.com/mod/rottencreatures)
-* [**Inqurity**](https://github.com/Inqurity): участвовал в русском и украинском переводах модов
-* * [Idwtialsimmoedm](https://modrinth.com/mod/idwtialsimmoedm)
-* * [e4mc](https://modrinth.com/mod/e4mc)
-* [**REXE**](https://github.com/RedmanEXE): перевёл на белорусский моды
-* * [Chat Heads](https://modrinth.com/mod/chat-heads)
-* * [AppleSkin](https://modrinth.com/mod/appleskin)
-* * [Dark Mode Everywhere](https://modrinth.com/mod/dark-mode-everywhere)
-* [**ggleb2**](https://github.com/ggleb2) и [**Western01**](https://github.com/marisathewitch): сделали полезные указания
-* [**aBIank**](https://github.com/SillyAsriel): участвовал в принятии решений, перевёл некоторые квесты Monifactory
-* [**TheAnaxMan**](https://github.com/TheAnaxMan): предложил переводы
-* * [All the Fabric 6](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/tree/alpha/%D0%A1%D0%B1%D0%BE%D1%80%D0%BA%D0%B8/All%20of%20Fabric%206)
-* * [All the Ores](https://www.curseforge.com/minecraft/mc-mods/ato)
-* * [Allthemodium](https://www.curseforge.com/minecraft/mc-mods/allthemodium)
-* * [Artifacts](https://modrinth.com/mod/artifacts)
-* * [Auto Workstations](https://modrinth.com/mod/auto-workstations)
-* [**cutiegin**](https://github.com/cutiegin): предложила переводы модов
-* * [Decocraft](https://modrinth.com/mod/decocraft)
-* * [Macaw's Bridges](https://modrinth.com/mod/macaws-bridges)
-* * [Macaw's Doors](https://modrinth.com/mod/macaws-doors)
-* * [Macaw's Fences and Walls](https://modrinth.com/mod/macaws-fences-and-walls)
-* * [Macaw's Furniture](https://modrinth.com/mod/macaws-furniture)
-* * [Macaw's Holidays](https://modrinth.com/mod/macaws-holidays)
-* * [Macaw's Lights and Lamps](https://modrinth.com/mod/macaws-lights-and-lamps)
-* * [Macaw's Paintings](https://modrinth.com/mod/macaws-paintings)
-* * [Macaw's Paths and Pavings](https://modrinth.com/mod/macaws-paths-and-pavings)
-* * [Macaw's Roofs](https://modrinth.com/mod/macaws-roofs)
-* * [Macaw's Trapdoors](https://modrinth.com/mod/macaws-trapdoors)
-* * [Macaw's Windows](https://modrinth.com/mod/macaws-windows)
-* * [MrCrayfish's Furniture Mod (Legacy)](https://www.curseforge.com/minecraft/mc-mods/mrcrayfish-furniture-mod)
-* * [MrCrayfish's Furniture Mod: Refurbished](https://www.curseforge.com/minecraft/mc-mods/refurbished-furniture)
-* * [SecurityCraft](https://modrinth.com/mod/security-craft)
-* [**ySh**](https://github.com/INe6dy): предложил переводы модов
-* * [Chipped](https://modrinth.com/mod/chipped)
-* * [Malum](https://modrinth.com/mod/malum)
-* [**xaxilin**](https://steamcommunity.com/id/xaxilin/): предложил переводы
-* * [Alex's Tamables](https://www.curseforge.com/minecraft/mc-mods/alexs-tamables)
-* * [Ancient Curses](https://www.curseforge.com/minecraft/mc-mods/ancient-curses)
-* * [Bartering Station](https://modrinth.com/mod/bartering-station)
-* * [Better MC 4](https://www.curseforge.com/minecraft/modpacks/better-mc-forge-bmc4)
-* * [BetterEnd](https://modrinth.com/mod/betterend)
-* * [BisectHosting Server Integration Menu](https://modrinth.com/mod/bisect-mod)
-* * [Bookshelf](https://modrinth.com/mod/bookshelf-lib)
-* * [Cactus Armory](https://www.curseforge.com/minecraft/mc-mods/cactus-armory)
-* * [Configured](https://www.curseforge.com/minecraft/mc-mods/configured)
-* * [Curios API](https://modrinth.com/mod/curios)
-* * [FTB Library](https://www.curseforge.com/minecraft/mc-mods/ftb-library-forge)
-* * [Game Discs](https://www.curseforge.com/minecraft/mc-mods/game-discs)
-* * [Geckolib](https://modrinth.com/mod/geckolib)
-* * [Jade](https://modrinth.com/mod/jade)
-* * [L_Ender's Cataclysm](https://modrinth.com/mod/l_enders-cataclysm)
-* * [Luna](https://www.curseforge.com/minecraft/mc-mods/luna)
-* * [Sawmill](https://modrinth.com/mod/universal-sawmill)
-* * [Serene Seasons Fix](https://www.curseforge.com/minecraft/mc-mods/serene-seasons-fix)
-* * [Serene Seasons](https://modrinth.com/mod/serene-seasons)
-* * [Spawners+](https://modrinth.com/mod/spawners_plus)
-* * [Stalwart Dungeons](https://modrinth.com/mod/stalwart-dungeons)
-* * [Tips](https://modrinth.com/mod/tips)
-* [**gri3229**](https://github.com/gri3229): предложил перевод мода [Industrial Foregoing](https://modrinth.com/mod/industrial-foregoing)
-* [**Quinella**](https://github.com/RRimmer): предложил перевод мода [FTB Quests](https://www.curseforge.com/minecraft/mc-mods/ftb-quests-fabric)
-* [**Nord_Act**](https://github.com/NordAct): помогла с API
-* [**devin**](https://github.com/intergrav): создал дизайн [кнопок](https://github.com/intergrav/devins-badges), используемых в этом readme-файле
+* [**Дефлекта**](https://github.com/RushanM): большая часть переводов;
+* [**1the_same_cat1**](https://www.curseforge.com/members/1the_same_cat1): предложил переводы модов:
+* * [Simple Corinthium](https://www.curseforge.com/minecraft/mc-mods/simple-corinthium);
+* * [Simple Weapons for Better Combat](https://www.curseforge.com/minecraft/mc-mods/simple-weapons-for-better-combat);
+* * [Rotten Creatures](https://modrinth.com/mod/rottencreatures);
+* [**Inqurity**](https://github.com/Inqurity): участвовал в русском и украинском переводах модов:
+* * [Idwtialsimmoedm](https://modrinth.com/mod/idwtialsimmoedm);
+* * [e4mc](https://modrinth.com/mod/e4mc);
+* [**REXE**](https://github.com/RedmanEXE): перевёл на белорусский моды:
+* * [Chat Heads](https://modrinth.com/mod/chat-heads);
+* * [AppleSkin](https://modrinth.com/mod/appleskin);
+* * [Dark Mode Everywhere](https://modrinth.com/mod/dark-mode-everywhere);
+* [**ggleb2**](https://github.com/ggleb2) и [**Western01**](https://github.com/marisathewitch): сделали полезные указания;
+* [**aBIank**](https://github.com/SillyAsriel): участвовал в принятии решений, перевёл некоторые квесты Monifactory;
+* [**TheAnaxMan**](https://github.com/TheAnaxMan): предложил переводы:;
+* * [All the Fabric 6](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/tree/alpha/%D0%A1%D0%B1%D0%BE%D1%80%D0%BA%D0%B8/All%20of%20Fabric%206);
+* * [All the Ores](https://www.curseforge.com/minecraft/mc-mods/ato);
+* * [Allthemodium](https://www.curseforge.com/minecraft/mc-mods/allthemodium);
+* * [Artifacts](https://modrinth.com/mod/artifacts);
+* * [Auto Workstations](https://modrinth.com/mod/auto-workstations);
+* [**cutiegin**](https://github.com/cutiegin): предложила переводы модов:
+* * [Decocraft](https://modrinth.com/mod/decocraft);
+* * [Macaw's Bridges](https://modrinth.com/mod/macaws-bridges);
+* * [Macaw's Doors](https://modrinth.com/mod/macaws-doors);
+* * [Macaw's Fences and Walls](https://modrinth.com/mod/macaws-fences-and-walls);
+* * [Macaw's Furniture](https://modrinth.com/mod/macaws-furniture);
+* * [Macaw's Holidays](https://modrinth.com/mod/macaws-holidays);
+* * [Macaw's Lights and Lamps](https://modrinth.com/mod/macaws-lights-and-lamps);
+* * [Macaw's Paintings](https://modrinth.com/mod/macaws-paintings);
+* * [Macaw's Paths and Pavings](https://modrinth.com/mod/macaws-paths-and-pavings);
+* * [Macaw's Roofs](https://modrinth.com/mod/macaws-roofs);
+* * [Macaw's Trapdoors](https://modrinth.com/mod/macaws-trapdoors);
+* * [Macaw's Windows](https://modrinth.com/mod/macaws-windows);
+* * [MrCrayfish's Furniture Mod (Legacy)](https://www.curseforge.com/minecraft/mc-mods/mrcrayfish-furniture-mod);
+* * [MrCrayfish's Furniture Mod: Refurbished](https://www.curseforge.com/minecraft/mc-mods/refurbished-furniture);
+* * [SecurityCraft](https://modrinth.com/mod/security-craft);
+* [**ySh**](https://github.com/INe6dy): предложил переводы модов:
+* * [Chipped](https://modrinth.com/mod/chipped);
+* * [Malum](https://modrinth.com/mod/malum);
+* [**xaxilin**](https://steamcommunity.com/id/xaxilin/): несколько раз помогал в определении переводов и предложил переводы:
+* * [Accidentally Circumstantial Events](https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/2356179-1-7-10-forge-accidentally-circumstantial-events);
+* * [Alex's Tamables](https://www.curseforge.com/minecraft/mc-mods/alexs-tamables);
+* * [Ancient Curses](https://www.curseforge.com/minecraft/mc-mods/ancient-curses);
+* * [Bartering Station](https://modrinth.com/mod/bartering-station);
+* * [Better MC 4](https://www.curseforge.com/minecraft/modpacks/better-mc-forge-bmc4);
+* * [BetterEnd](https://modrinth.com/mod/betterend);
+* * [BisectHosting Server Integration Menu](https://modrinth.com/mod/bisect-mod);
+* * [Bookshelf](https://modrinth.com/mod/bookshelf-lib);
+* * [Cactus Armory](https://www.curseforge.com/minecraft/mc-mods/cactus-armory);
+* * [CodeChicken Core](https://modrinth.com/mod/codechicken-core);
+* * [Configured](https://www.curseforge.com/minecraft/mc-mods/configured);
+* * [Curios API](https://modrinth.com/mod/curios);
+* * [FTB Library](https://www.curseforge.com/minecraft/mc-mods/ftb-library-forge);
+* * [Game Discs](https://www.curseforge.com/minecraft/mc-mods/game-discs);
+* * [Geckolib](https://modrinth.com/mod/geckolib);
+* * [Iron Chests](https://modrinth.com/mod/cyberanner-ironchest);
+* * [Iron Shulker Boxes](https://modrinth.com/mod/iron-shulker-boxes);
+* * [Jade](https://modrinth.com/mod/jade);
+* * [L_Ender's Cataclysm](https://modrinth.com/mod/l_enders-cataclysm);
+* * [Luna](https://www.curseforge.com/minecraft/mc-mods/luna);
+* * [More Music Discs](https://modrinth.com/mod/more-music-discs);
+* * [Prominence Original Soundtrack](https://modrinth.com/mod/prominence-ost);
+* * [Sawmill](https://modrinth.com/mod/universal-sawmill);
+* * [Serene Seasons Fix](https://www.curseforge.com/minecraft/mc-mods/serene-seasons-fix);
+* * [Serene Seasons](https://modrinth.com/mod/serene-seasons);
+* * [Skibidi-Toilet-Mayhem](https://www.curseforge.com/minecraft/mc-mods/skibidi-toilet-mayhem-2);
+* * [Spawners+](https://modrinth.com/mod/spawners_plus);
+* * [Stalwart Dungeons](https://modrinth.com/mod/stalwart-dungeons);
+* * [Tips](https://modrinth.com/mod/tips);
+* [**gri3229**](https://github.com/gri3229): предложил перевод мода [Industrial Foregoing](https://modrinth.com/mod/industrial-foregoing);
+* [**Quinella**](https://github.com/RRimmer): предложил перевод мода [FTB Quests](https://www.curseforge.com/minecraft/mc-mods/ftb-quests-fabric);
+* [**Nord_Act**](https://github.com/NordAct): помогла с API;
+* [**devin**](https://github.com/intergrav): создал дизайн [кнопок](https://github.com/intergrav/devins-badges), используемых в этом readme-файле.
 
 </details>
 
