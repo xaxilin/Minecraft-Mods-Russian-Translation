@@ -355,7 +355,7 @@ async function getPreviousAssetVersions(lastTag) {
 }
 
 // Функция для создания архивов с учётом версий файлов
-function createArchives(changedFiles, nextTagInfo, previousAssetVersions, lastTag) {
+async function createArchives(changedFiles, nextTagInfo, previousAssetVersions, lastTag) {
     const assets = [];
 
     // Определение пути к releases на основе текущего рабочего каталога
