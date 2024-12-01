@@ -7,6 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const AdmZip = require('adm-zip');
 const execSync = require('child_process').execSync;
+const semver = require('semver');
 
 // Получение переменных окружения
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
@@ -372,9 +373,15 @@ function createArchives(changedFiles, nextTagInfo, previousAssetVersions, lastTa
             return fs.statSync(path.join(resourcePackDir, ver)).isDirectory();
         });
 
-        resourcePackVersions.forEach(ver => {
-            const baseName = `Rus-For-Mods-${ver}`;
-            let prevVersion = previousAssetVersions[baseName];
+        for (const ver of resourcePackVersions) {
+            const gameVersion = ver;
+            const baseNamePrefix = `Rus-For-Mods-${gameVersion}-`;
+
+            // Получаем последнюю релизную версию для этого игрового набора ресурсов
+            const lastReleaseVersion = await getLastResourcePackReleaseVersion(gameVersion) || '1.0';
+
+            // Проверяем предыдущие версии ассетов
+            let prevVersion = previousAssetVersions[`${baseNamePrefix}${lastReleaseVersion}`];
 
             // Проверка, изменились ли файлы в этой версии
             const versionDir = path.join('Набор ресурсов', ver);
@@ -382,28 +389,30 @@ function createArchives(changedFiles, nextTagInfo, previousAssetVersions, lastTa
 
             let assetVersion;
 
+            // Формирование новой версии
             if (prevVersion) {
-                // Извлечение номера предыдущей версии
-                const prevVersionNumber = getAssetVersionNumber(prevVersion);
+                const prevVersionParts = prevVersion.split('-');
+                const prevAlphaPart = prevVersionParts[prevVersionParts.length - 1];
+                const alphaMatch = prevAlphaPart.match(/^A(\d+)$/);
+                let newAlphaNumber = nextTagInfo.alphaNum;
 
-                if (relatedFiles.length > 0) {
-                    // Увеличение версии
-                    assetVersion = incrementAssetVersion(prevVersionNumber);
-                } else {
-                    // Оставляем версию прежней
-                    assetVersion = prevVersionNumber;
+                if (alphaMatch) {
+                    if (relatedFiles.length > 0) {
+                        // Увеличиваем номер альфы
+                        newAlphaNumber = parseInt(alphaMatch[1]) + 1;
+                    } else {
+                        // Оставляем предыдущую версию
+                        newAlphaNumber = parseInt(alphaMatch[1]);
+                    }
                 }
+
+                assetVersion = `${lastReleaseVersion}-C${nextTagInfo.candidateNum}-B${nextTagInfo.betaNum}-A${newAlphaNumber}`;
             } else {
-                // Если нет предыдущей версии, начинаем с 1-й альфы или используем версию из dev
-                if (lastTag && lastTag.startsWith('dev')) {
-                    const devNumber = parseInt(lastTag.slice(3));
-                    assetVersion = `1-C1-B1-A${devNumber}`;
-                } else {
-                    assetVersion = nextTagInfo.tag;
-                }
+                // Если нет предыдущей альфа-версии после релиза, начинаем новую альфу с A1
+                assetVersion = `${lastReleaseVersion}-C1-B1-A1`;
             }
 
-            const archiveName = `${baseName}-${assetVersion}.zip`;
+            const archiveName = `${baseNamePrefix}${assetVersion}.zip`;
             const outputPath = path.join(releasesDir, archiveName);
 
             const zip = new AdmZip();
@@ -434,7 +443,7 @@ function createArchives(changedFiles, nextTagInfo, previousAssetVersions, lastTa
                 path: outputPath,
                 name: archiveName
             });
-        });
+        }
     }
 
     // Создание архивов для наборов шейдеров
@@ -599,4 +608,38 @@ async function createRelease(tagInfo, releaseNotes, assets) {
         });
         console.log(`Загружен ассет: ${asset.name}`);
     }
+}
+
+// Получение последней релизной версии набора ресурсов для определённой версии игры
+async function getLastResourcePackReleaseVersion(gameVersion) {
+    const releases = await octokit.paginate(octokit.rest.repos.listReleases, {
+        ...github.context.repo,
+        per_page: 100,
+    });
+
+    // Фильтрование релизов, которые содержат набор ресурсов для указанной версии игры и являются полноценными релизами
+    const resourcePackReleases = releases.filter(release => !release.prerelease && release.assets.some(asset => {
+        const assetMatch = asset.name.match(new RegExp(`^Rus-For-Mods-${gameVersion}-(\\d+\\.\\d+)\\.zip$`));
+        return assetMatch;
+    }));
+
+    if (resourcePackReleases.length === 0) {
+        return null;
+    }
+
+    // Нахождение последнего релиза по дате
+    resourcePackReleases.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+
+    // Извлечение версии из названия ассета
+    for (const release of resourcePackReleases) {
+        const latestAsset = release.assets.find(asset => asset.name.startsWith(`Rus-For-Mods-${gameVersion}-`));
+        if (latestAsset) {
+            const versionMatch = latestAsset.name.match(new RegExp(`^Rus-For-Mods-${gameVersion}-(\\d+\\.\\d+)\\.zip$`));
+            if (versionMatch) {
+                return versionMatch[1]; // Возвращение версии
+            }
+        }
+    }
+
+    return null;
 }
