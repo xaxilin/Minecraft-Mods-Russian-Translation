@@ -337,7 +337,7 @@
 
 Чтобы набор имел возможность изменять перевод модов, он должен стоять выше набора ресурсов модов. Например, у Fabric он называется «Моды Fabric» (Fabric Mods).
 <div align="center">
-    <img title="Хаос, хаос!? Нет, нет! Порядок, порядок!" height="250" src="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/beta/Ассеты/order_v3.png?raw=true">
+    <img title="Хаос, хаос!? Нет, нет! Порядок, порядок!" height="300" src="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/alpha/%D0%90%D1%81%D1%81%D0%B5%D1%82%D1%8B/1.21-1.1.png?raw=true">
 </div>
 
 ### 🔁 Моды-расширения
