@@ -1,3 +1,5 @@
+⚠️ Идёт работа над систематизацией выпусков. Выход версий может быть сильно задержан.
+
 # Русский перевод модификаций Minecraft от Дефлекты
 
 <div align="center">
@@ -25,6 +27,8 @@
 <details>
 <summary>Раскрыть список</summary>
 <br>
+
+⚠️ Таблица неактуальна, так как идёт перенос на автоматическую систему
 
 * `1.7—1.21` — версии игры
 * ⬛ — мода нет на эту версию
@@ -434,7 +438,7 @@
 * [**gri3229**](https://github.com/gri3229): предложил перевод мода [Industrial Foregoing](https://modrinth.com/mod/industrial-foregoing);
 * [**Quinella**](https://github.com/RRimmer): предложил перевод мода [FTB Quests](https://www.curseforge.com/minecraft/mc-mods/ftb-quests-fabric);
 * [**Nord_Act**](https://github.com/NordAct): помогла с API;
-* [**devin**](https://github.com/intergrav): создал дизайн [кнопок](https://github.com/intergrav/devins-badges), используемых в этом readme-файле.
+* [**devin**](https://github.com/intergrav): создал дизайн [кнопок](https://github.com/intergrav/devins-badges), используемых в этом ридми-файле.
 
 </details>
 
@@ -442,9 +446,9 @@
 
 Есть личная просьба, предложение или любая другая причина обратиться лично ко мне? Вы можете написать мне в одной из этих сетей:
 
-* ВКонтакте: **`deflecta`**
-* Discord: **`deflecta`**
-* Telegram: **`RMKHTDNV`**
+* ВКонтакте: **`deflecta`**;
+* Discord: **`deflecta`**;
+* Telegram: **`RMKHTDNV`**.
 
 А также у проекта появились [канал](http://t.me/mcmodsru) и [группа](http://t.me/mcmodsrugroup) в Telegram!
 
@@ -454,9 +458,9 @@
 
 Также вы можете поддержать меня материально по следующим ссылкам:
 
-* [Boosty](https://boosty.to/rushanm)
-* [VK Pay](https://vk.me/moneysend/deflecta)
-* [Donation Alerts](https://www.donationalerts.com/r/deflecta)
-* [ЮMoney](https://yoomoney.ru/to/410015215253910)
+* [Boosty](https://boosty.to/rushanm);
+* [VK Pay](https://vk.me/moneysend/deflecta);
+* [Donation Alerts](https://www.donationalerts.com/r/deflecta);
+* [ЮMoney](https://yoomoney.ru/to/410015215253910).
 
 Буду благодарен за каждый рубль!
