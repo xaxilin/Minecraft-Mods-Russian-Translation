@@ -12,8 +12,9 @@
     "dependencies": {
         "@actions/core": "^1.11.1",
         "@actions/github": "^6.0.0",
-        "googleapis": "^144.0.0",
         "@octokit/rest": "^21.0.2",
-        "adm-zip": "^0.5.16"
+        "adm-zip": "^0.5.16",
+        "googleapis": "^144.0.0",
+        "semver": "^7.6.3"
     }
 }
