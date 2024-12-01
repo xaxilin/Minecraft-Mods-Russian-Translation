@@ -8,12 +8,12 @@
             "fallback": "Русский перевод модов",
             "translate": "minecraft.resource_pack.modsru.name"
         },
-        "pack_format": 34,
+        "pack_format": 42,
         "supported_formats": [
             33,
-            37
+            43
         ],
         "автор": "Дефлекта",
-        "версия": "1.21-2"
+        "версия": "1.21-1.2"
     }
 }
