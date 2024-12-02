@@ -65,7 +65,7 @@ const sheets = google.sheets({
         const previousAssetVersions = await getPreviousAssetVersions(lastTag);
 
         // 7. Создание архивов
-        const assets = createArchives(changedFiles, nextTagInfo, previousAssetVersions, lastTag);
+        const assets = await createArchives(changedFiles, nextTagInfo, previousAssetVersions, lastTag);
         console.log('Сгенерированные assets:', assets);
 
         // 8. Создание выпуска на Гитхабе
