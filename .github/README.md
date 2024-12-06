@@ -27,98 +27,40 @@
 <summary>Раскрыть список</summary>
 <br>
 
-| Версия игры | Идентификатор | Мод | Версия мода |
-| --- | --- | --- | --- |
-| 1.12 | aiotbotania | AIOT Botania | 0.7.1 |
-| 1.12 | aqua_creepers | Aqua Creepers! | 1.2.3 |
-| 1.12 | aroma1997core | Aroma1997Core | 2.0.0.2 b167 |
-| 1.12 | scple | SCP Lockdown Extras | 1.0 |
-| 1.12 | … | … | … | …
-| 1.16 | actuallyusefulsmithingtable | Actually Useful Smithing Table | 1.1 |
-| 1.16 | advancementframes | Advancement Frames | 1.0.5 |
-| 1.16 | alexsdelight | Alex's Delights | 1.0 |
-| 1.16 | amfd | Alex's Delight | 1.1.3 |
-| 1.16 | ancient_war | Ancient Warfare Legacy | 1.1 |
-| 1.16 | sereneseasonsfix | Serene Seasons Fix | 1.0.5 |
-| 1.16 | tradingpost | Trading Post | 1.0.2 |
-| 1.16 | … | … | … | … |
-| 1.17 | actuallyusefulsmithingtable | Actually Useful Smithing Table | 2.1 |
-| 1.17 | alexsdelight | Alex's Delights | 1.1 |
-| 1.17 | sereneseasonsfix | Serene Seasons Fix | 1.0.5 |
-| 1.17 | tradingpost | Trading Post | 2.0 |
-| 1.17 | … | … | … | … |
-| 1.18 | actuallyusefulsmithingtable | Actually Useful Smithing Table | 3.1 |
-| 1.18 | advancementframes | Advancement Frames | 1.1.1 |
-| 1.18 | alexsdelight | Alex's Delight | 1.3.3 |
-| 1.18 | alexsdelight | Alex's Delights | 1.2 |
-| 1.18 | sereneseasonsfix | Serene Seasons Fix | 1.0.6 |
-| 1.18 | tradingpost | Trading Post | 3.2 |
-| 1.18 | … | … | … | … |
-| 1.19 | actuallyusefulsmithingtable | Actually Useful Smithing Table | 4.1.1 |
-| 1.19 | advancementframes | Advancement Frames | 2.0 |
-| 1.19 | alexsdelight | Alex's Delight | 1.4.1 |
-| 1.19 | barteringstation | Bartering Station | 6.0 |
-| 1.19 | parcool | ParCool! | 3.2.1.2-R |
-| 1.19 | sawmill | Sawmill | 1.2 |
-| 1.19 | sereneseasonsfix | Serene Seasons Fix | 1.0.8 |
-| 1.19 | sodium | Sodium | 0.4.10 build.24 |
-| 1.19 | tradingpost | Trading Post | 6.0 |
-| 1.19 | twilightforest | The Twilight Forest | 4.2.1696 |
-| 1.19 | … | … | … | … |
-| 1.20 | absentbydesign | Absent by Design | 1.8 |
-| 1.20 | advancementframes | Advancement Frames | 2.2.7 |
-| 1.20 | alexscavesdelight | Alex's Caves Delight | 1.0.12 |
-| 1.20 | alexsdelight | Alex's Delight | 1.5 |
-| 1.20 | barteringstation | Bartering Station | 20.4.1 |
-| 1.20 | embeddium | Xenon | 0.3.19 |
-| 1.20 | minecraft | Xenon | 0.3.19 |
-| 1.20 | parcool | ParCool! | 3.2.1.2-R |
-| 1.20 | patchouli | Patchouli | 86 |
-| 1.20 | sawmill | Sawmill | 1.4.3 |
-| 1.20 | sereneseasonsfix | Serene Seasons Fix | 1.0.8 |
-| 1.20 | silentgear | Silent Gear | 3.6.6 |
-| 1.20 | sodium | Sodium | 0.5.11 |
-| 1.20 | spawnersplus | Spawners+ | 4.0 |
-| 1.20 | tradingpost | Trading Post | 20.4.2 |
-| 1.20 | trofers | Trofers | 5.0.2 |
-| 1.20 | xenon | Xenon | 0.3.19 |
-| 1.20 | … | … | … | … |
-| 1.21 | accessories | Accessories | 1.0.0 Beta 31 |
-| 1.21 | ae2wtlib | Applied Energistics 2 Wireless Terminals | 19.1.3-beta |
-| 1.21 | alltheores | All the Ores | 2.3.4-alpha |
-| 1.21 | barteringstation | Bartering Station | 21.0 |
-| 1.21 | fabric | Fabric | 08.06.2024 |
-| 1.21 | fabric-gamerule-test | Fabric | 08.06.2024 |
-| 1.21 | fabric-keybindings-v1-testmod | Fabric | 08.06.2024 |
-| 1.21 | fabric-networking-api-v1-testmod | Fabric | 08.06.2024 |
-| 1.21 | fabric-object-builder-api-v1-testmod | Fabric | 08.06.2024 |
-| 1.21 | fabric-particles-v1-testmod | Fabric | 08.06.2024 |
-| 1.21 | fabric-registry-sync-v0 | Fabric Registry Sync | 08.06.2024 |
-| 1.21 | fabric-resource-conditions-api-v1-testmod | Fabric | 08.06.2024 |
-| 1.21 | fabric-resource-loader-v0 | Fabric Resource Loader | 08.06.2024 |
-| 1.21 | fabric-resource-loader-v0-testmod | Fabric Resource Loader | 08.06.2024 |
-| 1.21 | fabric-resource-loader-v0-testmod-test1 | Fabric Resource Loader | 08.06.2024 |
-| 1.21 | fabric-screen-handler-api-v1-testmod | Fabric | 08.06.2024 |
-| 1.21 | ftblibrary | FTB Library | 2101.1.2 |
-| 1.21 | iris | Iris Shaders | 1.7.3 |
-| 1.21 | placeholder-api | Placeholder API | 2.4.1 |
-| 1.21 | sawmill | Sawmill | 1.5.3 |
-| 1.21 | sodium | Sodium | 0.6.0-beta.1 |
-| 1.21 |  | Cloth Config API |  |
-| 1.21 |  | Just Enough Items |  |
-| 1.21 |  | Architectury Test |  |
-| 1.21 |  | Dynamic FPS |  |
-| 1.21 |  | Applied Energistics 2 Wireless Terminals |  |
-| 1.21 |  | Fabric |  |
-| 1.21 |  | Fabric Gamerule Test |  |
-| 1.21 |  | Fabric Keybindings v1 Testmod |  |
-| 1.21 |  | Fabric Networking API v1 Testmod |  |
-| 1.21 | testmod | Fabric Testmod | 25.09.2022 |
-| 1.21 | neotests_survivability_hanging_mangrove_propagule_test | Neotests Survivability Hanging Mangrove Propagule Test | 27.06.2024 |
-| 1.21 | neotests_test_modify_default_components_event | Neotests Test Modify Default Components Event | 02.05.2024 |
-| 1.21 | neotests_survivability_small_dripleaf_test | Neotests Survivability Small Dripleaf Test | 27.06.2024 |
-| 1.21 | neotests_survivability_chorus_flower_test | Neotests Survivability Chorus Flower Test | 27.06.2024 |
-| 1.21 | … | … | … | … |
+* `1.21.x—Beta 1.7.x` — версии игры;
+* ⬛ — либо мода нет на эту версию игры, либо его перевод не начинался;
+* 🟥 — перевод мода был начат;
+* ✅ — мод переведён.
+
+| Мод | 1.21.x | 1.20.x | 1.19.x | 1.18.x | 1.17.x | 1.16.x | 1.15.x | 1.14.x | 1.13.x | 1.12.x | 1.11.x | 1.10.x | 1.09.x | 1.9.x | 1.8.x | 1.7.x | 1.6.x | Beta 1.7.x |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [AppleSkin](https://modrinth.com/mod/appleskin) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Just Enough Items](https://modrinth.com/mod/jei) | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Architectury API](https://modrinth.com/mod/architectury-api) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Entity Culling](https://modrinth.com/mod/entityculling) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Sodium](https://modrinth.com/mod/sodium) | ✅  | 🟥  | 🟥  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Iris Shaders](https://modrinth.com/mod/iris) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Bookshelf](https://modrinth.com/mod/bookshelf-lib) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Mod Menu](https://modrinth.com/mod/modmenu) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Lithium](https://modrinth.com/mod/lithium) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Dynamic FPS](https://modrinth.com/mod/dynamic-fps) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Trading Post](https://modrinth.com/mod/trading-post) | 🟥  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Applied Energistics 2 Wireless Terminals](https://modrinth.com/mod/applied-energistics-2-wireless-terminals) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Architectury API Test](https://github.com/architectury/architectury-api) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Fabric](https://github.com/FabricMC/fabric) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Fabric Gamerule Test](https://github.com/FabricMC/fabric) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Fabric Keybindings v1 Testmod](https://github.com/FabricMC/fabric) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Fabric Networking API v1 Testmod](https://github.com/FabricMC/fabric) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Fabric Testmod](https://github.com/FabricMC/fabric) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Neotests Survivability Chorus Flower Test](https://neoforged.net/) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Neotests Survivability Hanging Mangrove Propagule Test](https://neoforged.net/) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Neotests Survivability Small Dripleaf Test](https://neoforged.net/) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Neotests Test Modify Default Components Event](https://neoforged.net/) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Cloth Config API](https://modrinth.com/mod/cloth-config) | ⬛ | ⬛ | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Prominence Original Soundtrack](https://modrinth.com/mod/prominence-ost) | ⬛ | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Skibidi-Toilet-Mayhem](https://www.curseforge.com/minecraft/mc-mods/skibidi-toilet-mayhem-2) | ⬛ | 🟥  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [AIOT Botania](https://modrinth.com/mod/aiot-botania) | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [OreSpawn](https://dangerzone-archive.weebly.com/orespawn.html) | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 
 </details>
 
