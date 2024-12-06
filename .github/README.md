@@ -34,6 +34,8 @@
 
 | Мод | 1.21.x | 1.20.x | 1.19.x | 1.18.x | 1.17.x | 1.16.x | 1.15.x | 1.14.x | 1.13.x | 1.12.x | 1.11.x | 1.10.x | 1.09.x | 1.9.x | 1.8.x | 1.7.x | 1.6.x | Beta 1.7.x |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [Fabric API](https://modrinth.com/mod/fabric-api) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Cloth Config API](https://modrinth.com/mod/cloth-config) | ✅  | ⬛ | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 | [AppleSkin](https://modrinth.com/mod/appleskin) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 | [Just Enough Items](https://modrinth.com/mod/jei) | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 | [Architectury API](https://modrinth.com/mod/architectury-api) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
@@ -46,6 +48,9 @@
 | [Dynamic FPS](https://modrinth.com/mod/dynamic-fps) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 | [Trading Post](https://modrinth.com/mod/trading-post) | 🟥  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 | [Applied Energistics 2 Wireless Terminals](https://modrinth.com/mod/applied-energistics-2-wireless-terminals) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [AIOT Botania](https://modrinth.com/mod/aiot-botania) | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Prominence Original Soundtrack](https://modrinth.com/mod/prominence-ost) | ⬛ | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| [Skibidi-Toilet-Mayhem](https://www.curseforge.com/minecraft/mc-mods/skibidi-toilet-mayhem-2) | ⬛ | 🟥  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 | [Architectury API Test](https://github.com/architectury/architectury-api) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 | [Fabric](https://github.com/FabricMC/fabric) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 | [Fabric Gamerule Test](https://github.com/FabricMC/fabric) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
@@ -56,10 +61,6 @@
 | [Neotests Survivability Hanging Mangrove Propagule Test](https://neoforged.net/) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 | [Neotests Survivability Small Dripleaf Test](https://neoforged.net/) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 | [Neotests Test Modify Default Components Event](https://neoforged.net/) | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
-| [Cloth Config API](https://modrinth.com/mod/cloth-config) | ⬛ | ⬛ | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
-| [Prominence Original Soundtrack](https://modrinth.com/mod/prominence-ost) | ⬛ | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
-| [Skibidi-Toilet-Mayhem](https://www.curseforge.com/minecraft/mc-mods/skibidi-toilet-mayhem-2) | ⬛ | 🟥  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
-| [AIOT Botania](https://modrinth.com/mod/aiot-botania) | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 | [OreSpawn](https://dangerzone-archive.weebly.com/orespawn.html) | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ✅  | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 
 </details>
