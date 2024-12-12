@@ -6,8 +6,8 @@
 
 ### Установка сборки на русском
 
-* Установите сборку со [страницы на CurseForge](https://www.curseforge.com/minecraft/modpacks/all-the-mods-9/files/all?page=1&pageSize=20);
-* Скачайте архив с русским переводом All the Mods 9 с последнего альфа-выпуска на [странице выпусков этого репозитория](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/releases);
-* Распакуйте архив в папку вашей установки All the Mods 9 с заменой файлов;
-* Включите русский перевод модов в меню наборов ресурсов;
-* Готово!
+1. Установите сборку со [страницы на CurseForge](https://www.curseforge.com/minecraft/modpacks/all-the-mods-9/files/all?page=1&pageSize=20).
+2. Скачайте архив с русским переводом All the Mods 9 с последнего альфа-выпуска на [странице выпусков этого репозитория](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/releases).
+3. Распакуйте архив в папку вашей установки All the Mods 9 с заменой файлов.
+4. Включите русский перевод модов в меню наборов ресурсов.
+5. Готово!

@@ -6,8 +6,8 @@ Better MC 4 переводится на русский язык силами [**
 
 ### Установка сборки на русском
 
-* Установите [сборку с CurseForge](https://www.curseforge.com/minecraft/modpacks/better-mc-forge-bmc4);
-* Скачайте архив с русским переводом Better MC 4 с последнего альфа-выпуска на [странице выпусков этого репозитория](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/releases);
-* Распакуйте архив в папку вашей установки Better MC 4 с заменой файлов;
-* Включите русский перевод модов в меню наборов ресурсов;
-* Готово!
+1. Установите [сборку с CurseForge](https://www.curseforge.com/minecraft/modpacks/better-mc-forge-bmc4).
+2. Скачайте архив с русским переводом Better MC 4 с последнего альфа-выпуска на [странице выпусков этого репозитория](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/releases).
+3. Распакуйте архив в папку вашей установки Better MC 4 с заменой файлов.
+4. Включите русский перевод модов в меню наборов ресурсов.
+5. Готово!
