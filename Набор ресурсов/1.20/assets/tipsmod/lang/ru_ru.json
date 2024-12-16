@@ -1,7 +1,7 @@
 {
     "gui.tips.list.config": "Настройки",
     "gui.tips.list.entry.added_by": "Добавлено пользователем: %s",
-    "gui.tips.list.entry.click_to_copy": "Нажмите, чтобы скопировать ID",
+    "gui.tips.list.entry.click_to_copy": "Нажмите, чтобы скопировать идентификатор",
     "gui.tips.list.entry.copied": "Скопировано!",
     "gui.tips.list.entry.cycle_time": "Продолжительность цикла: %s",
     "gui.tips.list.entry.disabled": "Отключено в настройках!",

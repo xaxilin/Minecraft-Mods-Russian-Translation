@@ -159,7 +159,7 @@
     "ftbquests.gui.complete_instantly": "Завершить мгновенно",
     "ftbquests.gui.complete_instantly_q": "Завершить это задание мгновенно?",
     "ftbquests.gui.confirm_esc": "Отменить несохраненные изменения?",
-    "ftbquests.gui.copy_id": "Скопировать ID",
+    "ftbquests.gui.copy_id": "Скопировать идентификатор",
     "ftbquests.gui.copy_id.paste_hint": "Вы можете использовать этот ID для вставки квестов или ссылок на квесты",
     "ftbquests.gui.copy_id.quick_properties": "Быстрое редактирование свойств...",
     "ftbquests.gui.edit": "Редактировать",
