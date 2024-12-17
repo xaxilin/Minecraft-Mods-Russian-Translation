@@ -379,7 +379,6 @@
     "button.zenith.salvage": "Разобрать Предметы",
     "button.zenith.upgrade": "Улучшить Камень",
     "button.zenith.upgrade.no": "Недостаточно ресурсов",
-    "comment_id": "/Emi",
     "config.jade.plugin_zenith.adventure": "Модуль Приключений Zenith",
     "config.jade.plugin_zenith.ench": "Модуль Заклинаний Zenith",
     "config.jade.plugin_zenith.spawner": "Модуль Призывателя Zenith",
