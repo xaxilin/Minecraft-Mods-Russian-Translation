@@ -1,11 +1,13 @@
 itemGroup.tabHarvestCraft=HarvestCraft
-itemGroup.tabHarvestCraft2=HarvestCraft: Культуры
-itemGroup.tabHarvestCraft3=HarvestCraft: Еда
+itemGroup.tabHarvestCraft2=HarvestCraft: культуры
+itemGroup.tabHarvestCraft3=HarvestCraft: еда
 
 # Tooltips
+
 tooltip.harvestcraft.item.queenbeeItem=Пасека: Медовые соты, восковые соты, личинки\nСетка создания: Маточное молочко при 0 прочности
 
 # Blocks
+
 tile.cuttingboard.name=Разделочная доска
 tile.pot.name=Горшок
 

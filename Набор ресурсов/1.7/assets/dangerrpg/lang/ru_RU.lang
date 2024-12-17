@@ -1,7 +1,7 @@
-itemGroup.tabRPGAmmunitions=RPG Оружие и броня
-itemGroup.tabRPGBlocks=RPG Блоки
-itemGroup.tabRPGItems=RPG Предметы
-itemGroup.tabRPGGems=RPG Самоцветы
+itemGroup.tabRPGAmmunitions=RPG: оружие и броня
+itemGroup.tabRPGBlocks=RPG: блоки
+itemGroup.tabRPGItems=RPG: предметы
+itemGroup.tabRPGGems=RPG: самоцветы
 
 item.magic_leather.name=Магическая кожа
 item.compressed_obsidian.name=Сжатый обсидиан

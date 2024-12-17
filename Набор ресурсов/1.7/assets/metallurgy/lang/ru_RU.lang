@@ -1,8 +1,8 @@
-itemGroup.Metallurgy.Machines=Metallurgy: Механизмы
-itemGroup.Metallurgy.Blocks=Metallurgy: Блоки
-itemGroup.Metallurgy.Items=Metallurgy: Предметы
-itemGroup.Metallurgy.Tools=Metallurgy: Инструменты
-itemGroup.Metallurgy.Armor=Metallurgy: Броня
+itemGroup.Metallurgy.Machines=Metallurgy: механизмы
+itemGroup.Metallurgy.Blocks=Metallurgy: блоки
+itemGroup.Metallurgy.Items=Metallurgy: предметы
+itemGroup.Metallurgy.Tools=Metallurgy: инструменты
+itemGroup.Metallurgy.Armor=Metallurgy: броня
 
 tile.machine.frame.name=Корпус механизма
 

@@ -1,9 +1,9 @@
-itemGroup.TConstructTools=Tinkers' Construct: Инструменты
-itemGroup.TConstructMaterials=Tinkers' Construc: Материалы
-itemGroup.TConstructBlocks=Tinkers' Construc: Блоки
-itemGroup.TConstructParts=Tinkers' Construc: Составные части
-itemGroup.TConstructEquipables=Tinkers' Construc: Экипировка
-itemGroup.TConstructWeaponry=Tinkers' Construc: Вооружение
+itemGroup.TConstructTools=Tinkers' Construct: инструменты
+itemGroup.TConstructMaterials=Tinkers' Construc: материалы
+itemGroup.TConstructBlocks=Tinkers' Construc: блоки
+itemGroup.TConstructParts=Tinkers' Construc: составные части
+itemGroup.TConstructEquipables=Tinkers' Construc: экипировка
+itemGroup.TConstructWeaponry=Tinkers' Construc: вооружение
 
 crafters.ToolStation=Инструментальная станция
 crafters.ToolForge=Инструментальная кузница

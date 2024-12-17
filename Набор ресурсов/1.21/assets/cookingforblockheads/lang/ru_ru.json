@@ -203,7 +203,7 @@
   "container.cookingforblockheads.cow_jar": "Корова в банке",
   "container.cookingforblockheads.cow_jar_custom": "%s в банке",
   "container.cookingforblockheads.cutting_board": "Разделочная доска",
-  "itemGroup.cookingforblockheads.cookingforblockheads": "Готовка для чайников",
+  "itemGroup.cookingforblockheads.cookingforblockheads": "Cooking for Blockheads",
   "waila.cookingforblockheads.water_stored": "Воды хранится: %d/%d",
   "waila.cookingforblockheads.milk_stored": "Молока хранится: %d/%d",
   "waila.cookingforblockheads.toast_progress": "Поджаривание... (%s %%)",

@@ -17,7 +17,7 @@
   "tooltip.farmingforblockheads.yellow_fertilizer": "Предотвращает вытаптывание",
   "tooltip.farmingforblockheads.payment": "Цена: %s",
   "tooltip.farmingforblockheads.payment_item": "%dx %s",
-  "itemGroup.farmingforblockheads.farmingforblockheads": "Фермерство для болванов",
+  "itemGroup.farmingforblockheads.farmingforblockheads": "Farming for Blockheads",
   "container.farmingforblockheads.market": "Рынок",
   "commands.farmingforblockheads.reload.success": "Реестры Фермерство для болванов перезагружены.",
   "gui.farmingforblockheads.market.no_selection": "Нет выбора",

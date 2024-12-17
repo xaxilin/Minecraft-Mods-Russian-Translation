@@ -1686,13 +1686,13 @@ black.pane.glass.fancyquadrant.desc=Чёрная красивая четверт
 
 # Creative Tab localizations
 
-itemGroup.tabOtherChiselBlocks=Chisel: Остальные блоки
-itemGroup.tabStoneChiselBlocks=Chisel: Каменные блоки
-itemGroup.tabWoodChiselBlocks=Chisel: Деревянные блоки
-itemGroup.tabMetalChiselBlocks=Chisel: Металлические блоки
-itemGroup.tabModdedChiselBlocks=Chisel: Блоки модификаций
-itemGroup.tabStairChiselBlocks=Chisel: Ступеньки
-itemGroup.tabChisel=Chisel: Предметы
+itemGroup.tabOtherChiselBlocks=Chisel: остальные блоки
+itemGroup.tabStoneChiselBlocks=Chisel: каменные блоки
+itemGroup.tabWoodChiselBlocks=Chisel: деревянные блоки
+itemGroup.tabMetalChiselBlocks=Chisel: металлические блоки
+itemGroup.tabModdedChiselBlocks=Chisel: блоки модификаций
+itemGroup.tabStairChiselBlocks=Chisel: ступеньки
+itemGroup.tabChisel=Chisel: предметы
 
 # Container
 
