@@ -2,7 +2,7 @@
     "ability.aoa3.attribute_modification": "Изменение характеристик",
     "ability.aoa3.attribute_modification.description": "Изменяет характеристику %1$s на %2$s",
     "ability.aoa3.auto_enchant_crafting": "Автоналожение чар при создании",
-    "ability.aoa3.auto_enchant_crafting.description": "Автоматически зачаровывает всё, что получится из рецепта для создания, если оно совместимо с зачарованиями: ",
+    "ability.aoa3.auto_enchant_crafting.description": "Автоматически зачаровывает всё, что получится при создании предмета, если он совместимо с зачарованиями: ",
     "ability.aoa3.auto_harvesting_trash": "Автосбор мусора",
     "ability.aoa3.auto_harvesting_trash.description": "Расходует заданный предмет при сборе блоков. Нажмите здесь, пока крадётесь, чтобы выбрать предмет.",
     "ability.aoa3.auto_harvesting_trash.description.item": "При добыче блоков все выпавшие %1$s будут поглощены. Нажмите, крадучись, чтобы изменить или убрать выделение.",
