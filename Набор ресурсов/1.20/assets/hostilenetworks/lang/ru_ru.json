@@ -1,0 +1,15 @@
+{
+    "block.hostilenetworks.loot_fabricator": "Фабрикатор добычи",
+    "block.hostilenetworks.sim_chamber": "Симуляционная камера",
+    "hostilenetworks.gui.cost": "Цена энергозатрат на модель: %s ФЭ/т",
+    "hostilenetworks.gui.energy": "%s/%s ФЭ",
+    "hostilenetworks.gui.fab_cost": "Цена энергозатрат: %s ФЭ/т",
+    "hostilenetworks.info.rft": "%s ФЭ/т",
+    "item.hostilenetworks.end_prediction": "Приобщённое эндер-предсказание",
+    "item.hostilenetworks.nether_prediction": "Приобщённое незерское предсказание",
+    "item.hostilenetworks.overworld_prediction": "Приобщеённое предсказание обычного мира",
+    "item.hostilenetworks.prediction": "Предсказание %s",
+    "item.hostilenetworks.prediction_matrix": "Матрица предсказаний",
+    "item.hostilenetworks.twilight_prediction": "Приобщённое сумеречное предсказание",
+    "itemGroup.hostilenetworks": "Hostile Neural Networks"
+}
