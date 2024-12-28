@@ -1,0 +1,245 @@
+{
+    "images":
+    {
+		"modpack":
+		{
+            "image" : "mainmenu:modpack.png",
+            "posX" : -80,
+            "posY" : -145,
+            "width" : 150,
+            "height" :150,
+            "alignment" : "center"
+		}
+    },
+    
+    "buttons":
+    {
+        "singleplayer":
+        {
+            "text" : "menu.singleplayer",
+            "posX" : -100,
+            "posY" : 0,
+            "width" : 175,
+            "height" : 20,
+			"alignment" : "center",
+			"texture" : "mainmenu:midbutton.png",
+            "action" : 
+            {
+                "type" : "openGui",
+                "gui" : "singleplayer"
+            }
+        },
+        
+        "multiplayer":
+        {
+            "text" : "menu.multiplayer",
+            "posX" : -100,
+            "posY" : 25,
+            "width" : 175,
+            "height" : 20,
+			"alignment" : "center",
+			"texture" : "mainmenu:midbutton.png",
+            "action" : 
+            {
+                "type" : "openGui",
+                "gui" : "multiplayer"
+            }
+        },
+        
+        "mods":
+        {
+            "text" : "Mods",
+            "posX" : -100,
+            "posY" : 50,
+            "width" : 175,
+            "height" : 20,
+			"alignment" : "center",
+			"texture" : "mainmenu:midbutton.png",
+            "action" : 
+            {
+                "type" : "openGui",
+                "gui" : "mods"
+            }
+        },
+        "FTB Site":
+        {
+            "text" : "",
+            "posX" : 80,
+            "posY" : 25,
+            "width" : 20,
+            "height" : 20,
+			"alignment" : "center",
+			"tooltip": "FTB Site",
+			"texture" : "mainmenu:web.png",
+			"imageWidth": "40",
+			"imageHeight": "40",
+            "action" : 
+            {
+                "type" : "openLink",
+				"link" : "http://www.feed-the-beast.com/"
+            }
+        },
+        "support":
+        {
+            "text" : "Support",
+            "posX" : -100,
+            "posY" : 75,
+            "width" : 98,
+            "height" : 20,
+			"alignment" : "center",
+			"texture" : "mainmenu:shortbutton.png",
+            "action" : 
+            {
+                "type" : "openLink",
+				"link" : "http://support.feed-the-beast.com/"
+            }
+        },
+        "changelog":
+        {
+            "text" : "Changelogs",
+            "posX" : 2,
+            "posY" : 75,
+            "width" : 98,
+            "height" : 20,
+			"alignment" : "center",
+			"texture" : "mainmenu:shortbutton.png",
+            "action" : 
+            {
+                "type" : "openLink",
+				"link" : "https://feedthebeast.atlassian.net/wiki/display/PML/Public+Modpack+Listings"
+            }
+        },
+        "options":
+        {
+            "text" : "menu.options",
+            "posX" : -100,
+            "posY" : 100,
+            "width" : 98,
+            "height" : 20,
+			"alignment" : "center",
+			"texture" : "mainmenu:shortbutton.png",
+            "action" : 
+            {
+                "type" : "openGui",
+                "gui" : "options"
+            }
+        },
+        
+        "quit":
+        {
+            "text" : "menu.quit",
+            "posX" : 2,
+            "posY" : 100,
+            "width" : 98,
+            "height" : 20,
+			"alignment" : "center",
+			"texture" : "mainmenu:shortbutton.png",
+            "action" : 
+            {
+                "type" : "quit"
+            }
+        },
+		
+        "shop":
+        {
+            "text" : "",
+            "posX" : 80,
+            "posY" : 50,
+			"tooltip": "FTB Shop",
+            "width" : 20,
+			"imageWidth": "40",
+			"imageHeight": "40",
+            "height" : 20,
+			"alignment" : "center",
+			"texture" : "mainmenu:shop.png",
+            "action" : 
+            {
+                "type" : "openLink",
+                "link" : "http://society6.com/feedthebeast"
+            }
+        },
+		
+        "language":
+        {
+            "text" : "",
+            "posX" : 80,
+            "posY" : 0,
+            "width" : 20,
+            "height" : 20,
+			"tooltip": "Language",
+			"alignment" : "center",
+			"imageWidth": "40",
+			"imageHeight": "40",
+			"texture" : "mainmenu:lang.png",
+            "action" : 
+            {
+                "type" : "openGui",
+                "gui" : "languages"
+            }
+        },
+        
+        "refresh":
+        {
+            "text" : "",
+            "posX" : -20,
+            "posY" : 0,
+            "width" : 20,
+            "height" : 20,
+			"alignment" : "top_right",
+            "texture" : "mainmenu:refresh.png",
+            "action" : 
+            {
+                "type" : "refresh"
+            }
+        }
+    },
+    
+    "texts":
+    {
+        "mojang":
+        {
+            "text" : "Copyright Mojang AB",
+            "posX" : -108,
+            "posY" : -15,
+            "color" : -1,
+            "alignment" : "bottom_right"
+        },
+		"forge":{
+			"text" : "Minecraft #mcversion#",
+            "posX" : 5,
+            "posY" : -35,
+            "color" : -1,
+            "alignment" : "bottom_left"
+		},
+		"modsloaded":{
+			"text" : "127 Mods Loaded",
+            "posX" : 5,
+            "posY" : -25,
+            "color" : -1,
+            "alignment" : "bottom_left"
+		},
+		"modsactive":{
+			"text" : "127 Mods Active",
+            "posX" : 5,
+            "posY" : -15,
+            "color" : -1,
+            "alignment" : "bottom_left"
+		},
+		"modpack":{
+			"text" : "FTB Terra 1.0.0",
+            "posX" : 5,
+            "posY" : -45,
+            "color" : -1,
+            "alignment" : "bottom_left"
+		}
+    },
+    
+    "other":
+    {
+        "background":
+        {
+            "image" : "mainmenu:terra_panorama.png",
+            "mode" : "fill"
+        }
+    }
+}
